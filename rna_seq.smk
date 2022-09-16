@@ -9,7 +9,7 @@ def getidlist():
                         id_list.append(id)
         return id_list
 
-#Bulid output folder 
+#Bulid output folder
 os.system("mkdir output")
 
 
