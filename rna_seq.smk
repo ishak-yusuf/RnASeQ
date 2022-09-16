@@ -1,43 +1,48 @@
 import os
 
-def getlist():
-        id_list_fq=[]
+def getidlist():
+        id_list=[]
         for i in os.listdir():
                 #gets list of fastqs:
                 if i.endswith('_R1_001.fastq.gz'):
                         id = os.path.basename(i)[:-16]
                         id_list.append(id)
-        return id_list_fq
+        return id_list
 
+#Bulid output folder 
+os.system("mkdir output")
 
 
 rule all:
         input:
-                expand("sample{sample}.sorted.bam", sample= getlist()),
-                "counts_all.txt"
+                expand("{dir}/{sample}.sorted.bam", sample= getidlist(),dir= "output"),
+                expand("{dir}/counts_all.txt", dir= "output")
 
 rule hisat2_alignment:
-        input:  f1= "{sample}_R1_001.fastq.gz",
-                f2= "{sample}_R2_001.fastq.gz"
-        output: 'sample{sample}.sorted.bam'
-        params: ref= '/home/genwork2/Desktop/05.ref_area/ref_hisat2_annhg38p13/GRCh38.p13.genome.fa'
+        input:  f1= "output/{sample}_R1_001.fastq.gz",
+                f2= "output/{sample}_R2_001.fastq.gz"
+        output: '{sample}.sorted.bam'
+        params: ref= '/home/genwork2/Desktop/05.ref_area/ref_hisat2_annhg38p13/GRCh38.p13.genome.fa',
+                strandness='FR'
         threads: 10
         message: """--- Alignment with Hisat"""
-        log: '{sample}.log'
+        log: 'output/{sample}.log'
         resources:
-                mem_gb= 20,
+                mem_gb= {threads} * 1.5,
                 rate_limit=1
         shell: '''
-                hisat2 -q --rna-strandness FR -x {params.ref} -1 {input.f1} -2 {input.f2} -p {threads} |\
+                hisat2 -q --rna-strandness {params.strandness} -x {params.ref} -1 {input.f1} -2 {input.f2} -p {threads} |\
                 samtools sort -o {output} -@ {threads} 2> {log}
         '''
 
 rule featureCounts:
-        output: "counts_all.txt"
-        params:  gff='/home/genwork2/Desktop/05.ref_area/ref_hisat2_annhg38p13/gencode_annotation.gff3'
+        input: expand("{dir}/{sample}.sorted.bam", sample= getidlist(),dir="output")
+        output: "output/counts_all.txt"
+        params: gff='/home/genwork2/Desktop/05.ref_area/ref_hisat2_annhg38p13/gencode_annotation.gff3',
+                g='gene_name',
+                t='exon'
         threads: 40
-        log: "counts_all.txt.log"
+        log: "output/counts_all.txt.log"
         resources:
-                mem_gb= 100
-        shell: 'featureCounts  -t exon  -g  exon_name  -a {params.gff} -o counts_all.txt\
-          -T {threads} {sample}.sorted.bam 2> {log}'
+                mem_gb= 126
+        shell: 'featureCounts  -t {params.t}  -g  {params.g}  -a {params.gff} -o {output} -T {threads} {input} 2> {log}'
