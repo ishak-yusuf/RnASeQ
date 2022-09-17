@@ -1,3 +1,6 @@
+configfile: "config.yaml"
+
+
 import os
 
 
@@ -13,6 +16,9 @@ def getidlist():
 
 # Bulid output folder
 os.system("mkdir output")
+
+
+include: "rnaseq_qc_reads.smk"
 
 
 rule all:
@@ -44,6 +50,9 @@ rule hisat2_alignment:
         hisat2 -q --rna-strandness {params.strandness} -x {params.ref} -1 {input.f1} -2 {input.f2} -p {threads} |\
         samtools sort -o {output} -@ {threads} 2> {log}
         """
+
+
+include: "rnaseq_qc_alignment.smk"
 
 
 rule featureCounts:
