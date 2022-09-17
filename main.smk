@@ -18,7 +18,7 @@ def getidlist():
 os.system("mkdir output")
 
 
-include: "rnaseq_qc_reads.smk"
+include: "rules/rnaseq_qc_reads.smk"
 
 
 rule all:
@@ -52,7 +52,7 @@ rule hisat2_alignment:
         """
 
 
-include: "rnaseq_qc_alignment.smk"
+include: "rules/rnaseq_qc_alignment.smk"
 
 
 rule featureCounts:
