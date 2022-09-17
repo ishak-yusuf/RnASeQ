@@ -5,12 +5,13 @@ import os
 
 
 def getidlist():
-    id_list = []
-    for i in os.listdir():
-        # gets list of fastqs:
-        if i.endswith("_R1_001.fastq.gz"):
-            id = os.path.basename(i)[:-16]
-            id_list.append(id)
+    extantion_fq = "_R1_001.fastq.gz"
+    len_extantion = 16
+    id_list = [
+        os.path.basename(i)[:-len_extantion]
+        for i in os.listdir()
+        if i.endswith(extantion_fq)
+    ]
     return id_list
 
 
