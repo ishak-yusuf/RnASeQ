@@ -9,5 +9,5 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 
 # Workflow
 <p align="center">
-  <img  src="https://user-images.githubusercontent.com/66043140/190983997-07c7f10b-518c-4405-bca5-238dcaf35209.png">
+  <img  src="https://user-images.githubusercontent.com/66043140/191005952-a842feed-8457-46e8-83d2-9049b60ed55c.png">
   </p>
