@@ -9,13 +9,13 @@ rule hisat2_alignment:
         strandness="FR",
     threads: 10
     message:
-        """--- Alignment with Hisat"""
+        "--- Alignment  with Hisat and samtools"
     log:
         "output/{sample}.log",
     resources:
         mem_gb=15,
         rate_limit=1,
-    # conda: ""
+    conda: ""
     shell:
         """
         hisat2 -q --rna-strandness {params.strandness} -x {params.ref} -1 {input.f1} -2 {input.f2} -p {threads} |\
