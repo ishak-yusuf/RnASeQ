@@ -13,10 +13,12 @@ def getidlist():
     ]
     return id_list
 
-
 # Bulid output folder
 os.system("mkdir output")
 
+# The container has the underlying all tools of the workflow
+# with --use-conda --use-singularity
+container: "docker://continuumio/miniconda3"
 
 rule all:
     input:
