@@ -6,9 +6,8 @@ import os
 
 def getidlist():
     extantion_fq = "_R1_001.fastq.gz"
-    len_extantion = 16
     id_list = [
-        os.path.basename(i)[:-len_extantion]
+        os.path.basename(i)[:-len(extantion_fq)]
         for i in os.listdir()
         if i.endswith(extantion_fq)
     ]
