@@ -8,6 +8,8 @@ rule featureCounts:
         g="gene_name",
         t="exon",
     threads: 40
+    message:
+        "--- Quantification with featureCounts "
     log:
         "output/counts_all.txt.log",
     resources:
