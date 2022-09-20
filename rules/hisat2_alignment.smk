@@ -19,5 +19,5 @@ rule hisat2_alignment:
     shell:
         """
         hisat2 -q --rna-strandness {params.strandness} -x {params.ref} -1 {input.f1} -2 {input.f2} -p {threads} \
-        | samtools sort -o {output}
+        | samtools sort -o {output} 2> {log}
         """
