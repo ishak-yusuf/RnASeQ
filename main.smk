@@ -18,7 +18,7 @@ os.system("mkdir output")
 
 # The container has the underlying all tools of the workflow
 # with --use-conda --use-singularity
-container: "docker://conda/miniconda3"
+container: "docker://condaforge/mambaforge"
 
 rule all:
     input:
