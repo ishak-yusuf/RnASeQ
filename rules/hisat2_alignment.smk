@@ -15,7 +15,7 @@ rule hisat2_alignment:
     resources:
         mem_gb=15,
         rate_limit=1,
-    conda: "envs/hisat2.yaml"
+    conda: "envs/align.yaml"
     shell:
         """
         hisat2 -q --rna-strandness {params.strandness} -x {params.ref} -1 {input.f1} -2 {input.f2} -p {threads} |\
