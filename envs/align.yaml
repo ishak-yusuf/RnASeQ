@@ -2,5 +2,5 @@ channels:
   - bioconda
   - bioconda
 dependencies:
-  - hisat2 =2.2.1
-  - sambamba= 0.8.2
+  - hisat2 ==2.2.1
+  - samtools ==1.3
