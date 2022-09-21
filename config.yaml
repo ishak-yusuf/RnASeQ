@@ -1,0 +1,6 @@
+idir: "input"    #input diractery
+odir : "output" #output diractery
+eff : "fastq.gz" #extension of fastq file
+threads:
+  max: 48
+  normal: 10
