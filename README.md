@@ -6,7 +6,8 @@
 
 
 
-RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. It supports mapping fastq rna-seq raw reads to genome and it can do gene-level Differential Expression Analysis (DEA) when genome is used as mapping reference.
+RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. It supports mapping fastq rna-seq raw reads to genome and obtains gene-level Differential Expression Analysis (DEA) when genome is used as mapping reference.
+
 
 
 # Workflow:
