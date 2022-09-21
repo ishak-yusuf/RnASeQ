@@ -26,9 +26,9 @@ rule all:
         expand("{dir}/counts_all.txt", dir="output"),  #step2 output (counts)
 
 
-include: "rules/rnaseq_qc_reads.smk"  #qc1 step
-include: "rules/hisat2_alignmaent.smk"  #step1
-include: "rules/rnaseq_qc_alignment.smk"  #qc2 step
-include: "rules/featureCounts.smk"  #step2
-include: "rules/DiffExp.smk"  #step3
-include: "rules/visualisation.smk"  #step4
+include: "rules/quality_control.smk"
+include: "rules/step1_map_to_genome.smk"
+include: "rules/step2_assess_the_alignment.smk"
+include: "rules/step3_quantification.smk"
+include: "rules/step4_different_gene_expression.smk"
+include: "rules/step5_visualisation.smk"
