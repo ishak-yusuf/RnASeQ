@@ -1,13 +1,21 @@
-rule FastQC:
+rule fastqc:
     input:
-        "{sample}.fastq.gz"
+        expand(["{dir}/{sample}.fastq.gz"], sample=SAMPLES, dir="output")
     output:
-        html= expand("{dir}/{sample}.html", dir="output")
-        zip=  expand("{dir}/{sample}_fastqc.zip", dir="output") 
-    params: "--quiet"
-    log:
-        "logs/fastqc/{sample}.log"
-    threads: 1
-    wrapper:
-        "v1.14.0/bio/fastqc"
+        expand(["{dir}/{sample}.2_fastqc.html"], sample=SAMPLES, dir="output")
+    conda:
+        "envs/qc.yml"
+    params:
+        threads = "10"
+    shell:
+        "fastqc -o {output} -t {params.threads} {input}"
 
+rule multiqc:
+    input:
+        expand(["{dir}/{sample}_fastqc.html"], sample=SAMPLES, dir="output")
+    output:
+        expand(["{dir}/multiqc_report.html"], dir="output")
+    conda:
+        "envs/qc.yml"
+    shell:
+        "multiqc {input} -o {output} "
