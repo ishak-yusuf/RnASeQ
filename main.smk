@@ -22,8 +22,18 @@ container: "docker://condaforge/mambaforge"
 
 rule all:
     input:
-        expand("{dir}/{sample}.sorted.bam", sample=getidlist(), dir="output"),  #step1 output (bams)
-        expand("{dir}/counts_all.txt", dir="output"),  #step2 output (counts)
+        Sample=getidlist(),
+        #quality control
+        expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
+        expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
+        expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
+        #stap1
+        expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
+        #step2
+        expand("{dir}/{sample}samflagstat.txt", sample=Sample, dir="output" ),
+        #step3
+        expand("{dir}/counts_all.txt", dir="output") #step3 output (counts)
+
 
 
 include: "rules/quality_control.smk"
