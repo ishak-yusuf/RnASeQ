@@ -7,13 +7,13 @@ rule hisat2_alignment:
     params:
         ref="genome",
         strandness="FR"
-    threads: 48
+    threads: 10
     message:
         "--- Alignment with Hisat"
     log:
         "output/{sample}.log",
     resources:
-        mem_gb=126,
+        mem_gb=16,
         rate_limit=1,
     conda: "envs/hisat2.yaml"
     shell:
