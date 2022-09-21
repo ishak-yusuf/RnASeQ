@@ -24,15 +24,15 @@ rule all:
     input:
         Sample=getidlist(),
         #quality control
-        expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
-        expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
+        expand("{dir}/{sample}.html", sample=Sample, dir="output"),
+        expand("{dir}/{sample}_fastqc.zip", sample=Sample, dir="output"),
         expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
         #stap1
         expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
         #step2
         expand("{dir}/{sample}samflagstat.txt", sample=Sample, dir="output" ),
         #step3
-        expand("{dir}/counts_all.txt", dir="output") #step3 output (counts)
+        expand("{dir}/counts_all.txt", dir="output")
 
 
 
