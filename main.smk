@@ -5,7 +5,7 @@ import os
 
 
 def getidlist():
-    extantion_fq = "_R1_001.fastq.gz"
+    extantion_fq =  config['eff'] ['f1']
     id_list = [
         os.path.basename(i)[:-len(extantion_fq)]
         for i in os.listdir()
