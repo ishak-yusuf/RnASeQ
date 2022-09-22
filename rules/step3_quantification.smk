@@ -1,4 +1,4 @@
-rule quantification:
+rule featureCounts:
     input:
         expand("{dir}/{sample}.sorted.bam", sample=getidlist(), dir="output"),
     output:
