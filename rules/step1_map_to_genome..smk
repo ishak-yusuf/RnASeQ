@@ -1,6 +1,6 @@
 rule hisat2_alignment:
     input:
-        f1="{sample}_R1_001.fastq.gz",
+        f1="{sample}",
         f2="{sample}_R2_001.fastq.gz"
     output:
         "output/{sample}.sorted.bam"
