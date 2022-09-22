@@ -1,24 +1,42 @@
+import os
 
-input_area = config['idir']
-output_area = config['odir'] ['qc']
+
+def getidlist():
+    extantion_fq =  config['eff'] ['f1']
+    id_list = [
+        os.path.basename(i)[:-len(extantion_fq)]
+        for i in os.listdir()
+        if i.endswith(extantion_fq)
+    ]
+    return id_list
+
+print(getidlist())
+# Bulid output folder
+os.system("mkdir config ['odir'] ['qc']")
+input_area = config ['idir']
+output_area = config ['odir'] ['qc']
 
 rule fastqc:
     input:
         expand(["{dir}/{sample}config['eff'] ['f']]", sample=getidlist(), dir= input_area)
     output:
-        expand(["{dir}/{sample}_fastqc.zip"], sample=getidlist(), dir= output_area )
+        "{output_area}/{sample}_fastqc.zip"
     conda:
         "envs/qc.yaml"
     params:
-        threads = config['th'] ['normal']
+        threads = config ['th'] ['normal']
     shell: "fastqc -o {output} -t {params.threads} {input}"
 
+
 rule multiqc:
-    input:  expand("{dir}/{sample}_fastqc.zip", sample=getidlist(), dir=input_area)
-    output:  expand(["{dir}/multiQC.html"], dir= output_area)
+    input:
+        expand("{dir}/{sample}_fastqc.zip", sample= getidlist(), dir=input_area)
+    output:
+        expand(["{dir}/multiQC.html"], dir= output_area)
     conda:
         "envs/qc.yaml"
-    shell:  'multiqc {input} -n {output}'
+    shell:
+        'multiqc {input} -n {output}'
 
 rule  seqkit:
     input:  expand("{dir}/{sample}.fastq.gz", sample=getidlist(), dir= input_area )
