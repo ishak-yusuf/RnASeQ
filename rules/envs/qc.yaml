@@ -1,0 +1,8 @@
+channels:
+    - bioconda
+    - bioconda
+    - bioconda
+dependencies:
+    - fastqc == 0.11.9
+    - multiqc == 1.13
+    - seqkit == 2.3.0
