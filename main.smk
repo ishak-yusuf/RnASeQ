@@ -1,32 +1,18 @@
 configfile: "config.yaml"
 
-
-import os
-
-
-def getidlist():
-    extantion_fq =  config['eff'] ['f1']
-    id_list = [
-        os.path.basename(i)[:-len(extantion_fq)]
-        for i in os.listdir()
-        if i.endswith(extantion_fq)
-    ]
-    return id_list
-
-# Bulid output folder
-os.system("mkdir config['odir'] ['qc']")
-
-# The container has the underlying all tools of the workflow
+#The container has the underlying all tools of the workflow
 # with --use-conda --use-singularity
 container: "docker://condaforge/mambaforge"
+
+include: "rules/quality_control.smk"
 
 rule all:
     input:
         Sample=getidlist(),
         #quality control
-        expand(["{dir}/{sample}_fastqc.zip"], sample=getidlist(), dir= config['odir'] ['qc']),
-        expand(["{dir}/multiQC.html"], dir= config['odir'] ['qc']),
-        expand(["{dir}/seqkit_stats.txt"], dir= config['odir'] ['qc']),
+        expand(["{dir}/{sample}_fastqc.zip"], sample=getidlist(), dir= config ['odir'] ['qc']),
+        expand(["{dir}/multiQC.html"], dir= config ['odir'] ['qc']),
+        expand(["{dir}/seqkit_stats.txt"], dir= config ['odir'] ['qc']),
         '''
         #stap1
         expand("{dir}/{sample}.sorted.bam", sample=Sample, dir="output"),
@@ -37,7 +23,7 @@ rule all:
         '''
 
 
-include: "rules/quality_control.smk"
+
 
 '''
 include: "rules/step1_map_to_genome.smk"
