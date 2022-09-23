@@ -1,5 +1,5 @@
 # RnASeQ: RNA-Seq Analysis Snakemake Workflow
-![License: MIT](https://img.shields.io/badge/ubuntu-20.04-green.svg)
+![License: MIT](https://img.shields.io/badge/ubuntu-20.04.3-green.svg)
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
