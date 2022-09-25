@@ -18,7 +18,7 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 # Tools: 
 | steps | tools|
 | :---:   | :---:  |
-| quality control |[![Conda:hisats](https://img.shields.io/badge/bioconda-multiqc-blue.svg)](https://anaconda.org/bioconda/multiqc) [![License: MIT](https://img.shields.io/badge/bioconda-fastqc-blue.svg)](https://anaconda.org/bioconda/fastqc) |
+| quality control |[![Conda:hisats](https://img.shields.io/badge/docker--staphb-multiqc-blue.svg)](https://hub.docker.com/r/staphb/multiqc) [![License: MIT](https://img.shields.io/badge/docker--staphb-fastqc-blue.svg)](https://hub.docker.com/r/staphb/fastqc) |
 | step1: map to genome |[![Conda:hisats](https://img.shields.io/badge/bioconda-Hisat2-important.svg)](https://anaconda.org/bioconda/hisat2) |
 | step2: assess the alignment |[![License: MIT](https://img.shields.io/badge/bioconda-rna--seqc-blue.svg)](https://anaconda.org/bioconda/rna-seqc) |
 | step3: quantification |[![Conda:subread](https://img.shields.io/badge/bioconda-subread-critical.svg)](https://anaconda.org/bioconda/subread) |
