@@ -9,7 +9,6 @@ rule FastQC:
            "qc/{sample}_fastqc.zip"
     threads: 10
     container: "docker://staphb/fastqc"
-    #conda : "envs/qc.ymal"
     shell: 'fastqc {input} -t {threads} -o qc '
 ''''
 rule multiqc:
