@@ -4,7 +4,7 @@ import os
 
 def getlist():
         id_list=[]
-        for i in os.listdir(f"{config ['idir']}"):
+        for i in os.listdir("input/"):
                 #gets list of fastqs:
                 if i.endswith(f"{config ['eff'] ['f']}"):
                         id = os.path.basename(i)[:-len(f"{config ['eff'] ['f']}")]
@@ -16,11 +16,13 @@ SAMPLES = getlist()
 
 print(SAMPLES)
 
-
 rule all:
         input:
-            expand("qc/{sample}_fastqc.html", sample=SAMPLES),
-            expand("qc/{sample}_fastqc.zip", sample=SAMPLES)
+            #quiltiy control output
+            expand("qc/{sample}_fastqc.html", sample= SAMPLES),
+            expand("qc/{sample}_fastqc.zip", sample= SAMPLES),
+            "qc/multiqc_report.html"
+            #"seqkit/seqkit_stats.txt"
 
 include: "rules/quality_control.smk"
 '''
