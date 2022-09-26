@@ -10,6 +10,7 @@ eff :                       #extension of fastq file
   f: ".fastq.gz"
   f1: "_R1_001.fastq.gz"
   f2: "_R2_001.fastq.gz"
-threads:
+th:    #threads
   max: 48
-  normal: 10
+  normal: 16
+
