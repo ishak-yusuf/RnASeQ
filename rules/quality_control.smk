@@ -6,17 +6,12 @@ rule FastQC:
     output:
            "qc/{sample}_fastqc.html",
            "qc/{sample}_fastqc.zip"
-    threads: 5
+    threads: 1
     container: "docker://staphb/fastqc"
-<<<<<<< Updated upstream
-    shell: 'fastqc {input} -t {threads} -o qc '
-''''
-=======
     shell:"""
         fastqc {input} -t {threads} -o qc
         """
 
->>>>>>> Stashed changes
 rule multiqc:
     input:
         expand("qc/{sample}_fastqc.zip", sample= SAMPLES)
@@ -36,8 +31,4 @@ rule  seqkit:
     threads: config['th'] ['normal']
     container: "docker://pegi3s/seqkit"
     shell: 'seqkit stats {input} -a -T -j {threads} >> {output} '
-<<<<<<< Updated upstream
-'''
-=======
 """
->>>>>>> Stashed changes
