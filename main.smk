@@ -1,5 +1,5 @@
 configfile: "config.yaml"
-
+# run with --use-conda --use-singularity
 import os
 
 def getlist():
