@@ -1,30 +1,43 @@
-
 rule FastQC:
     """
     QC on fastq read data
     """
-    input:  "input/{sample}.fastq.gz"
+    input: "input/{sample}.fastq.gz"
     output:
            "qc/{sample}_fastqc.html",
            "qc/{sample}_fastqc.zip"
-    threads: 10
+    threads: 5
     container: "docker://staphb/fastqc"
+<<<<<<< Updated upstream
     shell: 'fastqc {input} -t {threads} -o qc '
 ''''
+=======
+    shell:"""
+        fastqc {input} -t {threads} -o qc
+        """
+
+>>>>>>> Stashed changes
 rule multiqc:
     input:
-        expand("{dir}/{sample}_fastqc.zip", sample= getidlist(), dir=input_area)
+        expand("qc/{sample}_fastqc.zip", sample= SAMPLES)
     output:
-        expand(["{dir}/multiQC.html"], dir= output_area)
-    conda:
-        "envs/qc.yaml"
-    shell:
-        'multiqc {input} -n {output}'
+           "qc/multiqc_report.html"
+    container: "docker://staphb/multiqc"
+    shell: """
+        multiqc {input} -o qc
+        """
 
+"""
 rule  seqkit:
-    input:  expand("{dir}/{sample}.fastq.gz", sample=getidlist(), dir= input_area )
-    output: expand(["{dir}/seqkit_stats.txt"], dir= output_area)
+    input:
+        expand("input/{sample}.fastq.gz", sample= SAMPLES)
+    output:
+        "seqkit/seqkit_stats.txt"
     threads: config['th'] ['normal']
-    conda: "envs/qc.yaml"
+    container: "docker://pegi3s/seqkit"
     shell: 'seqkit stats {input} -a -T -j {threads} >> {output} '
+<<<<<<< Updated upstream
 '''
+=======
+"""
+>>>>>>> Stashed changes
