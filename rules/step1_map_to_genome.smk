@@ -2,16 +2,16 @@ rule hisat2_alignment:
     output:
         "stap2/{sample}.sorted.bam"
     params:
-        ref="genome",
-        strandness="FR"
-        f1= config ['ext'] ['f1']
-        f2= config ['ext'] ['f2']
+        ref= config ['gen'],
+        strandness="FR",
+        f1= config ['ext'] ['f1'],
+        f2= config ['ext'] ['f2'],
         i= "input/"
     threads: 10
     message:
         "--- Alignment with Hisat"
     log:
-        "output/{sample}.log",
+        "step2/{sample}.log",
     resources:
         mem_gb=16
 
