@@ -1,16 +1,11 @@
 idir: "input"              #input diractery
-odir :                     #output diractery
-  qc: "qc"
-  s1: "stap1"
-  s2: "stap2"
-  s3: "stap3"
-  s4: "stap4"
-  s5: "stap5"
-eff :                       #extension of fastq file
+ext :                       #extension of fastq file
   f: ".fastq.gz"
   f1: "_R1_001.fastq.gz"
   f2: "_R2_001.fastq.gz"
 th:    #threads
   max: 48
   normal: 16
+gen: "grch38/genome"        #gene ref
+gft: "/home/genwork2/Desktop/05.ref_area/ref_hisat2_annhg38p13/gencode_annotation_genes.gtf" #gene gtf file
 
