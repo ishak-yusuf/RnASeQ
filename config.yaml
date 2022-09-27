@@ -7,5 +7,5 @@ th:    #threads
   max: 48
   normal: 16
 gen: "grch38/genome"        #gene ref
-gft: "/home/genwork2/Desktop/05.ref_area/ref_hisat2_annhg38p13/gencode_annotation_genes.gtf" #gene gtf file
+gft: "grch38/genome.gtf" #gene gtf file
 
