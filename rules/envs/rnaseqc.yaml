@@ -1,5 +1,8 @@
 channels:
   - bioconda
-
+  - anaconda
+  - conda-forge
 dependencies:
   - rna-seqc == 2.3.5
+  - pandas == 1.4.4
+  - regex == 2022.9.13
