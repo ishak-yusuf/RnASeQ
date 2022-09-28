@@ -31,10 +31,12 @@ rule all:
             expand("step1/{sample}.sorted.bam", samples= getlist_id()),
             #STEP2_assess_the_alignment
             expand("step2/{sample}samtools_flagstat.txt", samples= getlist_id()),
+            "step2/alignment_rate.csv",
             #STEP3_quantification
             "step3/counts_all.txt"
 
 
 include: "rules/quality_control.smk"
 include: "rules/step1_map_to_genome.smk"
+include: "rules/step2_assess_the_alignment.smk"
 include: "rules/step3_quantification"
