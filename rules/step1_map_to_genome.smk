@@ -1,6 +1,6 @@
 rule hisat2_alignment:
     output:
-        "stap1/{sample}.sorted.bam"
+        "step1/{sample}.sorted.bam"
     params:
         ref= config ['gen'],
         strandness="FR",
