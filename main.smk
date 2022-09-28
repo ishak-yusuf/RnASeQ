@@ -28,10 +28,12 @@ rule all:
             "QC/multiqc_report.html",
             "QC/seqkit_stats.txt",
             #STEP1_map_to_genome
-            expand("step1/{sample}.sorted.bam", samples= getlist_id()),
+            expand("step1/{sample}.sorted.bam", sample= getlist_id()),
             #STEP2_assess_the_alignment
-            expand("step2/{sample}samtools_flagstat.txt", samples= getlist_id()),
+            expand("step2/{sample}samtools_flagstat.txt", sample= getlist_id()),
             "step2/alignment_rate.csv",
+            expand("step2/{sample}rnaqc", sample= getlist_id()),
+            "step2/rnaseqc_sheet.csv",
             #STEP3_quantification
             "step3/counts_all.txt"
 
@@ -39,4 +41,4 @@ rule all:
 include: "rules/quality_control.smk"
 include: "rules/step1_map_to_genome.smk"
 include: "rules/step2_assess_the_alignment.smk"
-include: "rules/step3_quantification"
+include: "rules/step3_quantification.smk"
