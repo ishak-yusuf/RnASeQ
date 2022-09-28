@@ -30,9 +30,9 @@ rule all:
             #STEP1_map_to_genome
             expand("step1/{sample}.sorted.bam", sample= getlist_id()),
             #STEP2_assess_the_alignment
-            expand("step2/{sample}samtools_flagstat.txt", sample= getlist_id()),
+            expand("step2/{sample}.samtools_flagstat.txt", sample= getlist_id()),
             "step2/alignment_rate.csv",
-            expand("step2/{sample}rnaqc", sample= getlist_id()),
+            expand("step2/{sample}.rnaqc", sample= getlist_id()),
             "step2/rnaseqc_sheet.csv",
             #STEP3_quantification
             "step3/counts_all.txt"
