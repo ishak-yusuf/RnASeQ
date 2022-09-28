@@ -25,7 +25,7 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 # How to run RnASeQ on your machine:
 1- Install  <a href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html" target="_blank">snakemake </a>
 
-2- Download the *RnASeq* folder and add **paired FASTQ files** to *input* folder
+2- Download the *RnASeq* directory and add **paired FASTQ files** to *input* folder
 
 3- Add **geneome.fa** , **genome Hisat2 index** and **genome.gtf** to *genome* folder
 
@@ -43,4 +43,4 @@ gen: "genome/genome"        #gene index for hisat2
 gene_fa: "genome/genome.fa" # genome fasta file
 gtf: "genome/genome.gtf" #annotation gtf file
 ```
-4- ``` snakemake --cores all  --use-singularity  --use-conda ```
+4-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
