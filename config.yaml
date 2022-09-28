@@ -6,6 +6,7 @@ ext :                       #extension of fastq file
 th:    #threads
   max: 48
   normal: 16
-gen: "grch38/genome"        #gene ref
-gft: "grch38/genome.gtf" #gene gtf file
+gen: "genome/genome"        #gene index for hisat2
+gene_fa: "genome/genome.fa"
+gft: "genome/genome.gtf" #gene gtf file
 
