@@ -8,5 +8,5 @@ th:    #threads
   normal: 16
 gen: "genome/genome"        #gene index for hisat2
 gene_fa: "genome/genome.fa"
-gft: "genome/genome.gtf" #gene gtf file
+gtf: "genome/genome.gtf" #gene gtf file
 
