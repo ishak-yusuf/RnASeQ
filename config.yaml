@@ -1,4 +1,3 @@
-idir: "input"              #input diractery
 ext :                       #extension of fastq file
   f: ".fastq.gz"
   f1: "_R1_001.fastq.gz"
@@ -9,4 +8,3 @@ th:    #threads
 gen: "genome/genome"        #gene index for hisat2
 gene_fa: "genome/genome.fa"
 gtf: "genome/genome.gtf" #gene gtf file
-
