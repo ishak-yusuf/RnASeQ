@@ -1,5 +1,5 @@
 configfile: "config.yaml"
-#snakemake --cores all  --use-singularity  --use-conda
+
 import os
 
 def getlist_all():
@@ -29,7 +29,8 @@ rule all:
             "QC/seqkit_stats.txt",
             #STEP1_map_to_genome
             expand("step1/{sample}.sorted.bam", samples= getlist_id()),
-            expand("step2/{sample}samtools_flagstat.txt", samples= getlist_id())
+            expand("step2/{sample}samtools_flagstat.txt", samples= getlist_id()),
+            "step3/counts_all.txt"
 
 
 include: "rules/quality_control.smk"
