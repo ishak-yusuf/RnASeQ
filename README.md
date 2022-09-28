@@ -22,3 +22,9 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 | step4: different gene expression |[![Conda:deseq2](https://img.shields.io/badge/bioconductor-deseq2-important.svg)](https://anaconda.org/bioconda/bioconductor-deseq2)|
 | step5: visualisation | [![Conda:subread](https://img.shields.io/badge/conda--forge-r--ggplot2-important.svg)](https://anaconda.org/conda-forge/r-ggplot2)|
 
+# How to run RnASeQ on your machine:
+1- Install  <a href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html" target="_blank">snakemake </a>
+
+2- Download the *RnASeq* folder and add paired FASTQ files to input folder
+
+3- ``` snakemake --cores all  --use-singularity  --use-conda ```
