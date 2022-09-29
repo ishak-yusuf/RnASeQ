@@ -1,4 +1,5 @@
 channels:
   - bioconda
+
 dependencies:
   - subread= 2.0.1
