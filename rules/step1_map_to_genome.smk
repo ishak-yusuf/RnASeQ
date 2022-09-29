@@ -4,8 +4,8 @@ rule hisat2_alignment:
     params:
         ref=config["gen"],
         strandness="FR",
-        f1=config["ext_hi"]["f1"],
-        f2=config["ext_hi"]["f2"],
+        f1=config["ext"]["f1"],
+        f2=config["ext"]["f2"],
         i="input/",
     threads: config["th"]["normal"]
     message:
