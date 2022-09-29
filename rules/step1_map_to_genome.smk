@@ -4,10 +4,10 @@ rule hisat2_alignment:
     params:
         ref=config["gen"],
         strandness="FR",
-        f1=config["ext"]["f1"],
-        f2=config["ext"]["f2"],
+        f1=config["ext_hi"]["f1"],
+        f2=config["ext_hi"]["f2"],
         i="input/",
-    threads: 10
+    threads: config["th"]["normal"]
     message:
         "--- Alignment with Hisat"
     log:
@@ -22,5 +22,8 @@ rule hisat2_alignment:
         """
         hisat2 -q --rna-strandness {params.strandness} -x {params.ref} \
         -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads} \
-        | samtools sort -o {output} 2> {log}
+        -S {sample}.sam
+        samtools view -S {sample}.sam -@ {threads} -b {sample}.bam
+        rm {sample}.sam
+        samtools sort -I {sample}.bam  -o {output} -@ {threads} 2> {log}
         """
