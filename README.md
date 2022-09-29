@@ -29,7 +29,11 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 
 3- Add **geneome.fa** , **genome Hisat2 index** and **genome.gtf** to *genome* folder
 
-4- Adjust **config.yaml** to be suitable for your case
+4- Prepare gtf for rnaseqc by **collapse_annotation.py** 
+
+``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
+
+5- Adjust **config.yaml** to be suitable for your case
 
 ```
 ext :                       #extension of fastq file
@@ -41,6 +45,6 @@ th:    #threads
   normal: 16
 gen: "genome/genome"        #gene index for hisat2
 gene_fa: "genome/genome.fa" # genome fasta file
-gtf: "genome/genome.gtf" #annotation gtf file
+gtf: "genome/genome_rnaseqc.gtf" #annotation gtf file
 ```
-4-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
+6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
