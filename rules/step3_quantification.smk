@@ -7,13 +7,11 @@ rule featureCounts:
         gff=config["gtf"],
         g="gene_name",
         t="exon",
-    threads: 40
+    threads: config["th"]["max"]
     message:
         "--- Quantification with featureCounts "
     log:
         "step3/counts_all.txt.log",
-    resources:
-        mem_gb=126,
     container:
         "docker://condaforge/mambaforge"
     conda:
