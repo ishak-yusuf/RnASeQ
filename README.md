@@ -29,7 +29,8 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 
 3- Add **geneome.fa** , **genome Hisat2 index** and **genome.gtf** to *genome* folder
 
-4- Prepare gtf for rnaseqc by **collapse_annotation.py** 
+4- Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a>
+
 
 ``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
 
@@ -38,8 +39,8 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 ```
 ext :                       #extension of fastq file
   f: ".fastq.gz"
-  f1: "_R1_001.fastq.gz"
-  f2: "_R2_001.fastq.gz"
+  f1: "_R1.fastq.gz"
+  f2: "_R2.fastq.gz"
 th:    #threads
   max: 48
   normal: 16
