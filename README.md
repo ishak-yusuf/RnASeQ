@@ -48,3 +48,15 @@ gene_fa: "genome/genome.fa" # genome fasta file
 gtf: "genome/genome_rnaseqc.gtf" #annotation gtf file
 ```
 6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
+
+# Expected outcome:
+
+The five folders re going to be extracted.
+
+1- **QC** : has all fastqc, multiqc and seqkit files 
+
+2- **step1** : has all sorted bam files
+
+3- **step2** : has alignment_rate.csv and rnaseqc_sheet.csv
+
+4- **step3** : includes counts_all.txt 
