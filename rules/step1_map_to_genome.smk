@@ -1,6 +1,8 @@
+container:"docker://condaforge/mambaforge"
+
 rule hisat2_alignment:
     output:
-        "step1/{sample}.sorted.bam",
+        "step1/{sample}.sam",
     params:
         ref=config["gen"],
         strandness="FR",
@@ -14,16 +16,24 @@ rule hisat2_alignment:
         "step1/{sample}.log",
     resources:
         mem_gb=16,
-    container:
-        "docker://condaforge/mambaforge"
     conda:
         "envs/align.yaml"
-    shell:
-        """
+    shell:"""
         hisat2 -q --rna-strandness {params.strandness} -x {params.ref} \
-        -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads} \
-        -S {sample}.sam
-        samtools view -S {sample}.sam -@ {threads} -b {sample}.bam
-        rm {sample}.sam
-        samtools sort -I {sample}.bam  -o {output} -@ {threads} 2> {log}
+        -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads}\
+        -S {output}
         """
+
+
+rule bams:
+    input: "step1/{sample}.sam"
+    output: "step1/{sample}.sorted.bam"
+    threads: config["th"]["normal"]
+    conda: "envs/align.yaml"
+    params: "step1"
+    shell: """
+          samtools view -@ {threads} -bh {input} > {params}{wildcards.sample}.bam
+          rm {input}
+          samtools sort -@ {threads} {params}{wildcards.sample}.bam > {output}
+          rm {params}{wildcards.sample}.bam
+          """
