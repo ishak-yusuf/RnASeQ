@@ -17,7 +17,7 @@ rule RNASeqQC:
     input:  "step1/{sample}.sorted.bam"
     params: config ['gtf']
     output: directory("step2/{sample}.r")
-    threads: 10
+    threads: config["th"]["normal"]
     log: "step2/{sample}r.log"
     conda: "envs/rnaseqc.yaml"
     shell:"rnaseqc {params} {input} {output} -d {threads} 2> {log}"
