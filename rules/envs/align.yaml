@@ -1,6 +1,7 @@
 channels:
   - bioconda
   - bioconda
+  - bioconda
 
 dependencies:
   - hisat2 == 2.2.1
