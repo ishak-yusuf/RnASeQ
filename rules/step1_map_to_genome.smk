@@ -22,4 +22,3 @@ rule hisat2_alignment:
         -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads} \
         | samtools sort -o {output} 2> {log}
         """
-
