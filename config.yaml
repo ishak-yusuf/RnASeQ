@@ -2,6 +2,7 @@ ext:                       #extension of fastq file
   f: ".fastq.gz"
   f1: "_R1_001.fastq.gz"
   f2: "_R2_001.fastq.gz"
+
 th:    #threads
   max: 48
   normal: 16
