@@ -1,8 +1,8 @@
 rule featureCounts:
     input:
-        expand("step2/{sample}.sorted.bam", sample=getlist_id()),
+        expand("step1/{sample}.sorted.bam", sample=getlist_id()),
     output:
-        "output/counts_all.txt",
+        "step3/counts_all.txt",
     params:
         gff= config ['gtf'],
         g="gene_name",
@@ -11,7 +11,7 @@ rule featureCounts:
     message:
         "--- Quantification with featureCounts "
     log:
-        "/counts_all.txt.log",
+        "step3/counts_all.txt.log",
     resources:
         mem_gb=126,
     container: "docker://condaforge/mambaforge"
