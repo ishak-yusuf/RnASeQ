@@ -28,7 +28,6 @@ rule all:
             "QC/multiqc_report.html",
             "QC/seqkit_stats.txt",
             #STEP1_map_to_genome
-            #expand("step1/{sample}.sam", sample= getlist_id()),
             expand("step1/{sample}.sorted.bam", sample= getlist_id()),
             #STEP2_assess_the_alignment
             expand("step2/{sample}.samtools_flagstat.txt", sample= getlist_id()),
