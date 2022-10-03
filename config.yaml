@@ -1,7 +1,10 @@
+map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
+end: "paired"              # "single" or "paired"
 ext:                       #extension of fastq file
-  f: ".fastq.gz"
-  f1: "_R1_001.fastq.gz"
-  f2: "_R2_001.fastq.gz"
+  f: ".fastq.gz"           # any extanstion of fastq file
+  f1: "_R1_001.fastq.gz"   # any extanstion of fastq file (forward)
+  f2: "_R2_001.fastq.gz"   # any extanstion of fastq file (reverse)
+  strandness: "RF"         # paired "FR" or "RF"  / single "F" or "R"
 
 th:    #threads
   max: 48
