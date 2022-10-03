@@ -1,5 +1,7 @@
 channels:
   - bioconda
+  - bioconda
 
 dependencies:
   - subread= 2.0.1
+  - samtools == 1.3
