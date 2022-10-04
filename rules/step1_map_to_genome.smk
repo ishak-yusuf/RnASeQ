@@ -13,7 +13,7 @@ if config["end"] == "paired" and config["map"] == "genome":
             i="input/",
         threads: config["th"]["normal"]
         message:
-            "--- Alignment with Hisat"
+            "--- Alignment paired genome with Hisat"
         log:
             "step1/{sample}.log",
         resources:
@@ -38,7 +38,7 @@ elif config["end"] == "single" and config["map"] == "genome":
 
         threads: config["th"]["normal"]
         message:
-            "--- Alignment with Hisat"
+            "--- Alignment single genome with Hisat"
         log:
             "step1/{sample}.log",
         resources:
@@ -50,17 +50,28 @@ elif config["end"] == "single" and config["map"] == "genome":
             -U {params.i}{wildcards.sample}{params.f}  -p {threads}\
             -S {output}
             """
+
 elif config ["end"] == "paired" and config ['map'] =="transcriptome":
     rule salmon_alignmant:
-        input:
-        output:
-        conda:
-        shell:
+        output: quant_dir=  directory("stetp1/{sample}"),
+        
+        threads: config["th"]["normal"]
+        message:
+            "--- Alignment paired transcriptome with salmon"
+        conda: "envs/align.yaml"
+        shell:"""
+            salmon quant -i {input.index} -l A -1 {params.i}{wildcards.sample}{params.f1} \
+            -2 {params.i}{wildcards.sample}{params.f2} \
+            -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
+            """
 
 elif config ["end"] == "single" and config ['map'] =="transcriptome"
     rule salmon_alignmant:
         input:
         output:
+        message:
+            "--- Alignment single transcriptome with salmon"
+        conda: "envs/align.yaml"
         shell:
 
 
