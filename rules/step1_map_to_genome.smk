@@ -1,6 +1,6 @@
 container:"docker://condaforge/mambaforge"
 
-if  config["end"] == "paired":
+if config["end"] == "paired" and config["map"] == "genome":
 
     rule hisat2_alignment:
         output:
@@ -25,7 +25,8 @@ if  config["end"] == "paired":
             -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads}\
             -S {output}
             """
-elif config["end"] == "single":
+
+elif config["end"] == "single" and config["map"] == "genome":
 
     rule hisat2_alignment:
         output:
@@ -49,6 +50,34 @@ elif config["end"] == "single":
             -U {params.i}{wildcards.sample}{params.f}  -p {threads}\
             -S {output}
             """
+elif config ["end"] == "paired" and config ['map'] =="transcriptome":
+    rule salmon_alignmant:
+        input:
+        output:
+        conda:
+        shell:
+
+elif config ["end"] == "single" and config ['map'] =="transcriptome"
+    rule salmon_alignmant:
+        input:
+        output:
+        shell:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 rule bams:
