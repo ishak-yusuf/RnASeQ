@@ -53,19 +53,22 @@ elif config["end"] == "single" and config["map"] == "genome":
 
 elif config ["end"] == "paired" and config ['map'] =="transcriptome":
     rule salmon_alignmant:
-        output: quant_dir=  directory("stetp1/{sample}"),
-        
+        output: quant_dir=  directory("stetp1/{sample}")
+        params:
+            ref=config["gen"],
+            strandness=config["ext"]["strandness"],
+            f=config["ext"]["f"]
         threads: config["th"]["normal"]
         message:
             "--- Alignment paired transcriptome with salmon"
         conda: "envs/align.yaml"
         shell:"""
-            salmon quant -i {input.index} -l A -1 {params.i}{wildcards.sample}{params.f1} \
+            salmon quant -i {params.ref} -l A -1 {params.i}{wildcards.sample}{params.f1} \
             -2 {params.i}{wildcards.sample}{params.f2} \
             -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
             """
 
-elif config ["end"] == "single" and config ['map'] =="transcriptome"
+elif config ["end"] == "single" and config ['map'] =="transcriptome":
     rule salmon_alignmant:
         input:
         output:
