@@ -86,7 +86,7 @@ elif config ["end"] == "single" and config ['map'] =="transcriptome":
         shell:"""
             salmon quant -i {params.ref} -l A -r {params.i}{wildcards.sample}{params.f} \
             -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
-
+            """
 
 
 rule bams:
