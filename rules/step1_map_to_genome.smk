@@ -35,6 +35,7 @@ elif config["end"] == "single" and config["map"] == "genome":
             ref=config["gen"],
             strandness=config["ext"]["strandness"],
             f=config["ext"]["f"],
+            i="input/"
 
         threads: config["th"]["normal"]
         message:
@@ -57,7 +58,9 @@ elif config ["end"] == "paired" and config ['map'] =="transcriptome":
         params:
             ref=config["gen"],
             strandness=config["ext"]["strandness"],
-            f=config["ext"]["f"]
+            f1=config["ext"]["f1"],
+            f2=config["ext"]["f2"],
+            i="input/",
         threads: config["th"]["normal"]
         message:
             "--- Alignment paired transcriptome with salmon"
@@ -70,27 +73,19 @@ elif config ["end"] == "paired" and config ['map'] =="transcriptome":
 
 elif config ["end"] == "single" and config ['map'] =="transcriptome":
     rule salmon_alignmant:
-        input:
-        output:
+        output: quant_dir= directory("stetp1/{sample}")
+        params:
+            ref=config["gen"],
+            strandness=config["ext"]["strandness"],
+            f=config["ext"]["f"],
+            i="input/",
+        threads: config["th"]["normal"]
         message:
-            "--- Alignment single transcriptome with salmon"
+            "--- Alignment paired transcriptome with salmon"
         conda: "envs/align.yaml"
-        shell:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        shell:"""
+            salmon quant -i {params.ref} -l A -r {params.i}{wildcards.sample}{params.f} \
+            -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
 
 
 
