@@ -1,7 +1,6 @@
 container:"docker://condaforge/mambaforge"
 
-if config["end"] == "paired" and config["map"] == "genome":
-
+if config ["end"] == "paired":
     rule hisat2_alignment:
         output:
             "step1/{sample}.sam",
@@ -26,7 +25,7 @@ if config["end"] == "paired" and config["map"] == "genome":
             -S {output}
             """
 
-elif config["end"] == "single" and config["map"] == "genome":
+elif config["end"] == "single":
 
     rule hisat2_alignment:
         output:
@@ -52,42 +51,6 @@ elif config["end"] == "single" and config["map"] == "genome":
             -S {output}
             """
 
-elif config ["end"] == "paired" and config ['map'] =="transcriptome":
-    rule salmon_alignmant:
-        output: quant_dir=  directory("stetp1/{sample}")
-        params:
-            ref=config["gen"],
-            strandness=config["ext"]["strandness"],
-            f1=config["ext"]["f1"],
-            f2=config["ext"]["f2"],
-            i="input/",
-        threads: config["th"]["normal"]
-        message:
-            "--- Alignment paired transcriptome with salmon"
-        conda: "envs/align.yaml"
-        shell:"""
-            salmon quant -i {params.ref} -l A -1 {params.i}{wildcards.sample}{params.f1} \
-            -2 {params.i}{wildcards.sample}{params.f2} \
-            -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
-            """
-
-elif config ["end"] == "single" and config ['map'] =="transcriptome":
-    rule salmon_alignmant:
-        output: quant_dir= directory("stetp1/{sample}")
-        params:
-            ref=config["gen"],
-            strandness=config["ext"]["strandness"],
-            f=config["ext"]["f"],
-            i="input/",
-        threads: config["th"]["normal"]
-        message:
-            "--- Alignment paired transcriptome with salmon"
-        conda: "envs/align.yaml"
-        shell:"""
-            salmon quant -i {params.ref} -l A -r {params.i}{wildcards.sample}{params.f} \
-            -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
-            """
-
 
 rule bams:
     input: "step1/{sample}.sam"
@@ -101,5 +64,10 @@ rule bams:
         samtools sort -@ {threads} {params}{wildcards.sample}.bam > {output}
         rm {params}{wildcards.sample}.bam
         """
+
+
+
+
+
 
 
