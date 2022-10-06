@@ -41,16 +41,21 @@ RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fas
 5- Adjust **config.yaml** to be suitable for your case
 
 ```
-ext :                       #extension of fastq file
-  f: ".fastq.gz"
-  f1: "_R1.fastq.gz"
-  f2: "_R2.fastq.gz"
+map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
+end: "paired"              # "single" or "paired"
+ext:                       #extension of fastq file
+  f: ".fastq.gz"           # any extanstion of fastq file
+  f1: "_R1_001.fastq.gz"   # any extanstion of fastq file (forward)
+  f2: "_R2_001.fastq.gz"   # any extanstion of fastq file (reverse)
+  strandness: "RF"         # paired "FR" or "RF"  / single "F" or "R"
+
 th:    #threads
   max: 48
   normal: 16
-gen: "genome/genome"        #gene index for hisat2
-gene_fa: "genome/genome.fa" # genome fasta file
-gtf: "genome/genome_rnaseqc.gtf" #annotation gtf file
+
+gen: "genome/genome"        #gene/transcriptome index for hisat2
+gene_fa: "genome/genome.fa" #gene/transcriptome fasta file
+gtf: "genome/genome.gtf"    #gene/transcriptome gtf file
 ```
 6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
