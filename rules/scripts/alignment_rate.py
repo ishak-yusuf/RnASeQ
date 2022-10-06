@@ -12,5 +12,5 @@ for i in snakemake.input:
     my_dict["Overall alignment rate"].append(re.search("\d+\s.\s\d+\smapped\s.(\d+.\d+.)", lines[4]).group(1))
 
 data = pd.DataFrame.from_dict(my_dict)
-data['Sample_Name'] = data['Sample_Name'].replace(to_replace='.samtools_flagstat.txt', value='',  regex=True)
+data['Sample_Name'] = data['Sample_Name'].replace(to_replace='.samtoolsflagstat.txt', value='',  regex=True)
 data.to_csv(str(snakemake.output), index=None, sep='\t')
