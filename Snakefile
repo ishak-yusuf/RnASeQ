@@ -41,11 +41,11 @@ if config["map"] == "map_to_ganome":
 
     if config["index"]:
 
-        include: "rules/genomeG.smk"
-    include: "rules/Step1G.smk"
-    include: "rules/Step2G.smk"
-    include: "rules/Step3G.smk"
-    include: "rules/Step4G.smk"
+        include: "rules/index_genomeG.smk"
+    include: "rules/Step1G_align.smk"
+    include: "rules/Step2G_assess_align.smk"
+    include: "rules/Step3G_featurecount.smk"
+    include: "rules/Step4G_diffexp.smk"
     include: "rules/Visualisation.smk"
 
 
@@ -66,7 +66,7 @@ elif config["map"] == "map_to_transcriptome":
 
     if config["index"]:
 
-        include: "rules/transT.smk"
-    include: "rules/Step1T.smk"
-    include: "rules/Step2T.smk"
+        include: "rules/index_transT.smk"
+    include: "rules/Step1T_align_quant.smk"
+    include: "rules/Step2T_diffexp.smk"
     include: "rules/Visualisation.smk"
