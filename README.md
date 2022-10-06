@@ -36,9 +36,17 @@ RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fas
 
 ``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
 
-5- Adjust **config.yaml** to be suitable for your case
+4- Adjust **config.yaml** to be suitable for your case
 
 ```
+#QC
+trim: yes                  # yes or no
+adapter: "nextera"         # "illumina" or "nextera"
+
+#index
+index: yes                 # yes or no
+
+#Direct the analysis
 map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
 end: "paired"              # "single" or "paired"
 ext:                       #extension of fastq file
@@ -47,15 +55,17 @@ ext:                       #extension of fastq file
   f2: "_R2_001.fastq.gz"   # any extanstion of fastq file (reverse)
   strandness: "RF"         # paired "FR" or "RF"  / single "F" or "R"
 
-th:    #threads
+#Threads
+th:
   max: 48
   normal: 16
 
+# Assembly and Annotation files
 gen: "genome/genome"        #gene/transcriptome index
-gene_fa: "genome/genome.fa" #genome and transcriptome assemblies fasta files
+gene_fa: "genome/genome.fa" #gene/transcriptome fasta file
 gtf: "genome/genome.gtf"    #gene/transcriptome gtf file
 ```
-6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
+5-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
 # Expected outcome:
 
