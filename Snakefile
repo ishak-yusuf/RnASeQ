@@ -55,9 +55,9 @@ elif config["map"] == "map_to_transcriptome":
         input:
             #QC
             expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
-            #Step1G
+            #Step1T
             expand("step1/{sample}.sorted.bam", sample=getlist_id()),
-            #Step2G
+            #Step2T
             expand("step2/{sample}.samtools_flagstat.txt", sample=getlist_id()),
             expand("step2/{sample}.r", sample=getlist_id()),
 
