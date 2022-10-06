@@ -20,7 +20,7 @@ RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fas
 | step2G |[![License: MIT](https://img.shields.io/badge/bioconda-rna--seqc-blue.svg)](https://anaconda.org/bioconda/rna-seqc) |
 | step3G |[![Conda:subread](https://img.shields.io/badge/bioconda-subread-critical.svg)](https://anaconda.org/bioconda/subread) 
 | Visualisation | [![Conda:subread](https://img.shields.io/badge/conda--forge-r--ggplot2-important.svg)](https://anaconda.org/conda-forge/r-ggplot2)|
-| transT + Step1T | [![docker:kallisto](https://img.shields.io/badge/bioconductor-deseq2-important.svg)](https://hub.docker.com/r/zlskidmore/kallisto) |
+| transT + Step1T | [![docker:kallisto](https://img.shields.io/badge/docker-kallisto-important.svg)](https://hub.docker.com/r/zlskidmore/kallisto) |
 | Step2T + step4G | [![Conda:deseq2](https://img.shields.io/badge/bioconductor-deseq2-important.svg)](https://anaconda.org/bioconda/bioconductor-deseq2) |
 
 # How to run RnASeQ on your machine:
