@@ -3,7 +3,7 @@
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome and transcriptome assemblies and obtains Differential gene expression analysis (Diffexp) among couple of conditions, case and control.  
+RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome and transcriptome assemblies and obtains differential gene expression analysis (Diffexp) among couple of conditions, case and control.  
 
 
 # Workflow:
@@ -13,7 +13,7 @@ RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fas
 
 
 # Tools: 
-| steps | tools|
+| Steps | Tools|
 | :---:   | :---:  |
 | QC |[![Conda:hisats](https://img.shields.io/badge/docker--staphb-multiqc-blue.svg)](https://hub.docker.com/r/staphb/multiqc) [![License: MIT](https://img.shields.io/badge/docker--staphb-fastqc-blue.svg)](https://hub.docker.com/r/staphb/fastqc) |
 | genomeG + step1G |[![Conda:hisats](https://img.shields.io/badge/docker--condaforge-mambaforge-blue.svg)](docker://condaforge/mambaforge) [![Conda:hisats](https://img.shields.io/badge/bioconda-Hisat2-important.svg)](https://anaconda.org/bioconda/hisat2)  |
@@ -85,7 +85,7 @@ The five folders re going to be extracted.
 
 **TRANSCRITOME**
 
-2- **Step1T**: folder has all TPM reads for each samples
+2- **Step1T**: folder has all TPM reads for each sample
 
 3- **Step2T**: folder has normalized data with edger
 
