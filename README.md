@@ -3,7 +3,7 @@
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome / transcriptome assemblie and obtains Differential gene expression analysis (Diffexp) among couple of conditions, cases and controls.  
+RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome and transcriptome assemblies and obtains Differential gene expression analysis (Diffexp) among couple of conditions, cases and controls.  
 
 
 # Workflow:
@@ -53,8 +53,8 @@ th:    #threads
   max: 48
   normal: 16
 
-gen: "genome/genome"        #gene/transcriptome index for hisat2
-gene_fa: "genome/genome.fa" #gene/transcriptome fasta file
+gen: "genome/genome"        #gene/transcriptome index
+gene_fa: "genome/genome.fa" #genome and transcriptome assemblies fasta files
 gtf: "genome/genome.gtf"    #gene/transcriptome gtf file
 ```
 6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
@@ -65,8 +65,20 @@ The five folders re going to be extracted.
 
 1- **QC** : has all fastqc, multiqc and seqkit files 
 
-2- **step1** : has all sorted bam files
+**GENOME**
 
-3- **step2** : has alignment_rate.csv and rnaseqc_sheet.csv
+2- **step1G** : has all sorted bam files
 
-4- **step3** : includes counts_all.txt 
+3- **step2G** : has alignment_rate.csv and rnaseqc_sheet.csv
+
+4- **step3G** : includes counts_all.txt 
+
+5- **step4G** : folder has normalized data with Deseq2
+
+**TRANSCRITOME**
+
+2- **Step1T**: folder has all TPM reads for each samples
+
+3- **Step2T**: folder has normalized data with edger
+
+4- **Visualisation** : folder has volcanoplot, MA plot and Heatmap
