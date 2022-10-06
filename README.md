@@ -3,7 +3,7 @@
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome and transcriptome assemblies and obtains Differential gene expression analysis (Diffexp) among couple of conditions, case and control.  
+RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome and transcriptome assemblies and obtains differential gene expression analysis (Diffexp) among couple of conditions, case and control.  
 
 
 # Workflow:
