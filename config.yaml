@@ -2,6 +2,10 @@
 trim: yes                  # yes or no
 adapter: "nextera"         # "illumina" or "nextera"
 
+#index
+index: yes                 # yes or no
+
+#Direct the analysis
 map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
 end: "paired"              # "single" or "paired"
 ext:                       #extension of fastq file
@@ -10,10 +14,12 @@ ext:                       #extension of fastq file
   f2: "_R2_001.fastq.gz"   # any extanstion of fastq file (reverse)
   strandness: "RF"         # paired "FR" or "RF"  / single "F" or "R"
 
-th:    #threads
+#Threads
+th:
   max: 48
   normal: 16
 
-gen: "genome/genome"        #gene/transcriptome index for hisat2
+# Assembly and Annotation files
+gen: "genome/genome"        #gene/transcriptome index
 gene_fa: "genome/genome.fa" #gene/transcriptome fasta file
 gtf: "genome/genome.gtf"    #gene/transcriptome gtf file
