@@ -1,12 +1,12 @@
+
 if config['trim']:
     rule trim:
-        output: 
-        params:i= "input/",
+        params: i= "input/",
             ext= config ['ext'] ['f'],
             adapter= config ['adapter']
         threads: config['th'] ['normal']
         container: "docker://dukegcb/trim-galore"
-        shell:"trim_galore {params.i}{wildcards.sample}{params.ext} -j {threads} --nextera "
+        shell:"trim_galore {params.i}{wildcards.sample}{params.ext} -j {threads} --{params.adapter} "
 
 rule FastQC:
     """
