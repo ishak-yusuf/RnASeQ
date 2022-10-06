@@ -1,3 +1,7 @@
+#QC
+trim: yes                  # yes or no
+adapter: "nextera"         # "illumina" or "nextera"
+
 map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
 end: "paired"              # "single" or "paired"
 ext:                       #extension of fastq file
