@@ -31,9 +31,7 @@ RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fas
 
 2- Download the *RnASeq* directory and add **paired FASTQ files** to *input* folder
 
-3- Add **geneome.fa** , **genome Hisat2 index** and **genome.gtf** to *genome* folder
-
-4- Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a>
+3- (genome only) Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a>
 
 
 ``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
