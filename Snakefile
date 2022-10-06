@@ -39,6 +39,20 @@ rule all:
 
 
 include: "rules/quality_control.smk"
-include: "rules/step1_map_to_genome.smk"
-include: "rules/step2_assess_the_alignment.smk"
-include: "rules/step3_quantification.smk"
+
+if config ["map"] == "map_to_ganome":
+        if config ["index"]:
+                include: "rules/genomeG.smk"
+        include: "rules/Step1G.smk"
+        include: "rules/Step2G.smk"
+        include: "rules/Step3G.smk"
+        include: "rules/Step4G.smk"
+
+elif config ["map"] == "map_to_transcriptome":
+        if config ["index"]:
+                include: "rules/transT.smk"
+        include: "rules/Step1T.smk"
+        include: "rules/Step2T.smk"
+
+include: "rules/Visualisation.smk"
+
