@@ -3,15 +3,14 @@
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. It supports mapping fastq rna-seq raw reads to genome and obtains gene-level Differential Expression Analysis (DEA) when genome is used as mapping reference.
-
+RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome / transcriptome assemblie and obtains Differential gene expression analysis (Diffexp) among couple of conditions, cases and controls.  
 
 
 # Workflow:
 <p align="center">
-  <img  src="https://user-images.githubusercontent.com/66043140/191448492-4ae0c646-d86e-4512-a414-e91623a48985.png">
+  <img  src="https://user-images.githubusercontent.com/66043140/194300382-3ca7f0b5-60b7-4e33-a6c3-00d1ca036d64.png">
   </p>
-  
+
 # Tools: 
 | steps | tools|
 | :---:   | :---:  |
