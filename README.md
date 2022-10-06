@@ -85,7 +85,7 @@ The five folders re going to be extracted.
 
 **TRANSCRITOME**
 
-2- **Step1T**: folder has all TPM reads for each samples
+2- **Step1T**: folder has all TPM reads for each sample
 
 3- **Step2T**: folder has normalized data with edger
 
