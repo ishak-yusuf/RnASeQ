@@ -8,8 +8,9 @@ RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fas
 
 # Workflow:
 <p align="center">
-  <img  src="https://user-images.githubusercontent.com/66043140/194300382-3ca7f0b5-60b7-4e33-a6c3-00d1ca036d64.png">
+  <img  src="https://user-images.githubusercontent.com/66043140/194316017-7c48648b-0187-4462-836f-876b93fc9ae2.png">
   </p>
+
 
 # Tools: 
 | steps | tools|
