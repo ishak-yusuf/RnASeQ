@@ -82,3 +82,7 @@ The five folders re going to be extracted.
 3- **Step2T**: folder has normalized data with edger
 
 4- **Visualisation** : folder has volcanoplot, MA plot and Heatmap
+
+# Main Reference:
+
+Zhang, X., Jonassen, I. RASflow: an RNA-Seq analysis workflow with Snakemake. BMC Bioinformatics 21, 110 (2020). https://doi.org/10.1186/s12859-020-3433-x
