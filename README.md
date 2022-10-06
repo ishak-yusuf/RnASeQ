@@ -3,25 +3,29 @@
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. It supports mapping fastq rna-seq raw reads to genome and obtains gene-level Differential Expression Analysis (DEA) when genome is used as mapping reference.
-
+RnASeQ performs the RNA seq analysis in any organism. It supports mapping of fastq rna-seq raw reads to genome and transcriptome assemblies and obtains Differential gene expression analysis (Diffexp) among couple of conditions, cases and controls.  
 
 
 # Workflow:
 <p align="center">
-  <img  src="https://user-images.githubusercontent.com/66043140/191448492-4ae0c646-d86e-4512-a414-e91623a48985.png">
+  <img  src="https://user-images.githubusercontent.com/66043140/194316017-7c48648b-0187-4462-836f-876b93fc9ae2.png">
   </p>
-  
+
+
 # Tools: 
 | steps | tools|
 | :---:   | :---:  |
-| quality control |[![Conda:hisats](https://img.shields.io/badge/docker--staphb-multiqc-blue.svg)](https://hub.docker.com/r/staphb/multiqc) [![License: MIT](https://img.shields.io/badge/docker--staphb-fastqc-blue.svg)](https://hub.docker.com/r/staphb/fastqc) |
-| step1: map to genome |[![Conda:hisats](https://img.shields.io/badge/docker--condaforge-mambaforge-blue.svg)](docker://condaforge/mambaforge) [![Conda:hisats](https://img.shields.io/badge/bioconda-Hisat2-important.svg)](https://anaconda.org/bioconda/hisat2)  |
-| step2: assess the alignment |[![License: MIT](https://img.shields.io/badge/bioconda-rna--seqc-blue.svg)](https://anaconda.org/bioconda/rna-seqc) |
-| step3: quantification |[![Conda:subread](https://img.shields.io/badge/bioconda-subread-critical.svg)](https://anaconda.org/bioconda/subread) |
-| step4: different gene expression |[![Conda:deseq2](https://img.shields.io/badge/bioconductor-deseq2-important.svg)](https://anaconda.org/bioconda/bioconductor-deseq2)|
-| step5: visualisation | [![Conda:subread](https://img.shields.io/badge/conda--forge-r--ggplot2-important.svg)](https://anaconda.org/conda-forge/r-ggplot2)|
+| QC |[![Conda:hisats](https://img.shields.io/badge/docker--staphb-multiqc-blue.svg)](https://hub.docker.com/r/staphb/multiqc) [![License: MIT](https://img.shields.io/badge/docker--staphb-fastqc-blue.svg)](https://hub.docker.com/r/staphb/fastqc) |
+| genomeG + step1G |[![Conda:hisats](https://img.shields.io/badge/docker--condaforge-mambaforge-blue.svg)](docker://condaforge/mambaforge) [![Conda:hisats](https://img.shields.io/badge/bioconda-Hisat2-important.svg)](https://anaconda.org/bioconda/hisat2)  |
+| step2G |[![License: MIT](https://img.shields.io/badge/bioconda-rna--seqc-blue.svg)](https://anaconda.org/bioconda/rna-seqc) |
+| step3G |[![Conda:subread](https://img.shields.io/badge/bioconda-subread-critical.svg)](https://anaconda.org/bioconda/subread) |
+| step4G | [![Conda:deseq2](https://img.shields.io/badge/bioconductor-deseq2-important.svg)](https://anaconda.org/bioconda/bioconductor-deseq2) |
+| transT + Step1T | [![docker:kallisto](https://img.shields.io/badge/docker-kallisto-important.svg)](https://hub.docker.com/r/zlskidmore/kallisto) |
+| Step2T  | [![bioconductor:edger](https://img.shields.io/badge/bioconductor-edger-important.svg)](https://anaconda.org/bioconda/bioconductor-edger) |
+| Visualisation | [![Conda:subread](https://img.shields.io/badge/conda--forge-r--ggplot2-important.svg)](https://anaconda.org/conda-forge/r-ggplot2)|
 
+
+ 
 # How to run RnASeQ on your machine:
 1- Install  <a href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html" target="_blank">snakemake </a>
 
@@ -37,16 +41,21 @@ RnASeQ performs a differential gene expression analysis with Hisat2 and Deseq2. 
 5- Adjust **config.yaml** to be suitable for your case
 
 ```
-ext :                       #extension of fastq file
-  f: ".fastq.gz"
-  f1: "_R1.fastq.gz"
-  f2: "_R2.fastq.gz"
+map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
+end: "paired"              # "single" or "paired"
+ext:                       #extension of fastq file
+  f: ".fastq.gz"           # any extanstion of fastq file
+  f1: "_R1_001.fastq.gz"   # any extanstion of fastq file (forward)
+  f2: "_R2_001.fastq.gz"   # any extanstion of fastq file (reverse)
+  strandness: "RF"         # paired "FR" or "RF"  / single "F" or "R"
+
 th:    #threads
   max: 48
   normal: 16
-gen: "genome/genome"        #gene index for hisat2
-gene_fa: "genome/genome.fa" # genome fasta file
-gtf: "genome/genome_rnaseqc.gtf" #annotation gtf file
+
+gen: "genome/genome"        #gene/transcriptome index
+gene_fa: "genome/genome.fa" #genome and transcriptome assemblies fasta files
+gtf: "genome/genome.gtf"    #gene/transcriptome gtf file
 ```
 6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
@@ -56,8 +65,20 @@ The five folders re going to be extracted.
 
 1- **QC** : has all fastqc, multiqc and seqkit files 
 
-2- **step1** : has all sorted bam files
+**GENOME**
 
-3- **step2** : has alignment_rate.csv and rnaseqc_sheet.csv
+2- **step1G** : has all sorted bam files
 
-4- **step3** : includes counts_all.txt 
+3- **step2G** : has alignment_rate.csv and rnaseqc_sheet.csv
+
+4- **step3G** : includes counts_all.txt 
+
+5- **step4G** : folder has normalized data with Deseq2
+
+**TRANSCRITOME**
+
+2- **Step1T**: folder has all TPM reads for each samples
+
+3- **Step2T**: folder has normalized data with edger
+
+4- **Visualisation** : folder has volcanoplot, MA plot and Heatmap
