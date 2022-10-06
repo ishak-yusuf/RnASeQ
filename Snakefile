@@ -24,20 +24,21 @@ def getlist_id():
     return id_list
 
 
+rule all:
+    input:
+        #QC
+        expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
+        #Step1G_align
+        expand("Step1G_align/{sample}.sorted.bam", sample=getlist_id()),
+        #Step2G_assess_align
+        expand("Step2G_assess_align/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
+        expand("Step2G_assess_align/{sample}.r", sample=getlist_id()),
+
+
+include: "rules/quality_control.smk"
+
+
 if config["map"] == "map_to_ganome":
-
-    rule all:
-        input:
-            #QC
-            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
-            #Step1G
-            expand("step1/{sample}.sorted.bam", sample=getlist_id()),
-            #Step2G
-            expand("step2/{sample}.samtools_flagstat.txt", sample=getlist_id()),
-            expand("step2/{sample}.r", sample=getlist_id()),
-
-    include: "rules/quality_control.smk"
-
 
     if config["index"]:
 
@@ -50,19 +51,6 @@ if config["map"] == "map_to_ganome":
 
 
 elif config["map"] == "map_to_transcriptome":
-
-    rule all:
-        input:
-            #QC
-            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
-            #Step1T
-            expand("step1/{sample}.sorted.bam", sample=getlist_id()),
-            #Step2T
-            expand("step2/{sample}.samtools_flagstat.txt", sample=getlist_id()),
-            expand("step2/{sample}.r", sample=getlist_id()),
-
-    include: "rules/quality_control.smk"
-
 
     if config["index"]:
 
