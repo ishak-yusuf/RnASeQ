@@ -1,3 +1,13 @@
+if config['trim']:
+    rule trim:
+        output: 
+        params:i= "input/",
+            ext= config ['ext'] ['f'],
+            adapter= config ['adapter']
+        threads: config['th'] ['normal']
+        container: "docker://dukegcb/trim-galore"
+        shell:"trim_galore {params.i}{wildcards.sample}{params.ext} -j {threads} --nextera "
+
 rule FastQC:
     """
     QC on fastq read data
@@ -13,8 +23,9 @@ rule FastQC:
 rule multiqc:
     input: expand("QC/{sample}_fastqc.zip", sample= getlist_all())
     output:"QC/multiqc_report.html"
+    params: "multiqc_report"
     container: "docker://staphb/multiqc"
-    shell: 'multiqc {input} -o QC'
+    shell: 'multiqc {input} -o QC -n {params}'
 
 rule  seqkit:
     input: expand("input/{sample}{FILE}", sample= getlist_all(), FILE= config ['ext'] ['f'])
