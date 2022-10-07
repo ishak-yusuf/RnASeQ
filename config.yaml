@@ -3,7 +3,8 @@ trim: yes                  # yes or no
 adapter: "nextera"         # "illumina" or "nextera"
 
 #index
-index: yes                 # yes or no
+IndexAssembly: "hisat2"                 # "hisat2" or "kallisto" or  directary of index in folder called "Assembly"
+indexname: "genomehuman38"              # Name the index or Type the name of index you have in "Assembly" folder
 
 #Direct the analysis
 map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
@@ -20,6 +21,5 @@ th:
   normal: 16
 
 # Assembly and Annotation files
-gen: "genome/genome"        #gene/transcriptome index
-gene_fa: "genome/genome.fa" #gene/transcriptome fasta file
-gtf: "genome/genome.gtf"    #gene/transcriptome gtf file
+Assembly: "Assembly/genome.fa" #gene/transcriptome fasta file
+gtf: "Assembly/genome.gtf"    #gene/transcriptome gtf file
