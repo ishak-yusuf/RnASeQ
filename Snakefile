@@ -4,6 +4,16 @@ configfile: "config.yaml"
 import os
 
 
+def getlist_all():
+    id_list = []
+    for i in os.listdir("input/"):
+        # gets list of fastqs:
+        if i.endswith(f"{config ['ext'] ['f']}"):
+            id = os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")]
+            id_list.append(id)
+    return id_list
+
+
 def getlist_id():
     id_list = []
     for i in os.listdir("input/"):
@@ -14,8 +24,6 @@ def getlist_id():
     return id_list
 
 
-
-
 if config["map"] == "map_to_ganome":
 
     rule all:
@@ -23,8 +31,7 @@ if config["map"] == "map_to_ganome":
             #QC
             expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
             "QC/multiqc_report.html",
-            "QC/seqkit_stats.txt"
-
+            "QC/seqkit_stats.txt",
             #Step1G_align
             expand("Step1G/{sample}.sorted.bam", sample=getlist_id()),
             #Step2G_assess_align
@@ -38,6 +45,7 @@ if config["map"] == "map_to_ganome":
     include: "rules/Step3G_featurecount.smk"
     include: "rules/Step4G_diffexp.smk"
     include: "rules/Visualisation.smk"
+
 
 """
 elif config["map"] == "map_to_transcriptome":
