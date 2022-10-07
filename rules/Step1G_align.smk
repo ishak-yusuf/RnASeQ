@@ -30,7 +30,7 @@ elif config["end"] == "single":
 
     rule hisat2_alignment:
         output:
-            "step1g/{sample}.sam",
+            "step1G/{sample}.sam",
         params:
             ref=config["indexname"],
             strandness=config["ext"]["strandness"],
