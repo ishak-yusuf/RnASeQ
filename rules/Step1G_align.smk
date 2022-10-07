@@ -3,24 +3,25 @@ container:"docker://condaforge/mambaforge"
 if config ["end"] == "paired":
     rule hisat2_alignment:
         output:
-            "step1/{sample}.sam",
+            "Step1G/{sample}.sam",
         params:
-            ref=config["gen"],
+            ref=config["indexname"],
             strandness=config["ext"]["strandness"],
             f1=config["ext"]["f1"],
             f2=config["ext"]["f2"],
             i="input/",
+            a="Assembly/"
         threads: config["th"]["normal"]
         message:
             "--- Alignment paired genome with Hisat"
         log:
-            "step1/{sample}.log",
+            "Step1G/{sample}.log",
         resources:
             mem_gb=16,
         conda:
             "envs/align.yaml"
         shell:"""
-            hisat2 -q --rna-strandness {params.strandness} -x {params.ref} \
+            hisat2 -q --rna-strandness {params.strandness} -x {params.a}{params.ref} \
             -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads}\
             -S {output}
             """
@@ -29,35 +30,36 @@ elif config["end"] == "single":
 
     rule hisat2_alignment:
         output:
-            "step1/{sample}.sam",
+            "step1g/{sample}.sam",
         params:
-            ref=config["gen"],
+            ref=config["indexname"],
             strandness=config["ext"]["strandness"],
             f=config["ext"]["f"],
-            i="input/"
+            i="input/",
+            a="Assembly/"
 
         threads: config["th"]["normal"]
         message:
             "--- Alignment single genome with Hisat"
         log:
-            "step1/{sample}.log",
+            "Step1G/{sample}.log",
         resources:
             mem_gb=16,
         conda:
             "envs/align.yaml"
         shell:"""
-            hisat2 -q --rna-strandness {params.strandness} -x {params.ref} \
+            hisat2 -q --rna-strandness {params.strandness} -x {params.a}{params.ref} \
             -U {params.i}{wildcards.sample}{params.f}  -p {threads}\
             -S {output}
             """
 
 
 rule bams:
-    input: "step1/{sample}.sam"
-    output: "step1/{sample}.sorted.bam"
+    input: "Step1G/{sample}.sam"
+    output: "Step1G/{sample}.sorted.bam"
     threads: config["th"]["normal"]
     conda: "envs/align.yaml"
-    params: "step1"
+    params: "Step1G"
     shell: """
         samtools view -@ {threads} -bh {input} > {params}{wildcards.sample}.bam
         rm {input}
