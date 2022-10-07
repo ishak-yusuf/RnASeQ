@@ -37,6 +37,10 @@ if config["map"] == "map_to_ganome":
             #Step2G_assess_align
             expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
             expand("Step2G/{sample}.r", sample=getlist_id()),
+            #Step3G_featurecount
+            "Step3G/counts_all.txt",
+            #Step4G_diffexp
+            #Visualisation
 
     include: "rules/quality_control.smk"
     include: "rules/index_genomeG.smk"
