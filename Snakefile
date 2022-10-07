@@ -23,15 +23,21 @@ def getlist_id():
             id_list.append(id)
     return id_list
 
+rule all:
+    input:
+        #QC
+        expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
+        "QC/multiqc_report.html",
+        "QC/seqkit_stats.txt",
+
+include: "rules/quality_control.smk"
+
+
 
 if config["map"] == "map_to_ganome":
 
     rule all:
         input:
-            #QC
-            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
-            "QC/multiqc_report.html",
-            "QC/seqkit_stats.txt",
             #Step1G_align
             expand("Step1G/{sample}.sorted.bam", sample=getlist_id()),
             #Step2G_assess_align
@@ -42,7 +48,6 @@ if config["map"] == "map_to_ganome":
             #Step4G_diffexp
             #Visualisation
 
-    include: "rules/quality_control.smk"
     include: "rules/index_genomeG.smk"
     include: "rules/Step1G_align.smk"
     include: "rules/Step2G_assess_align.smk"
@@ -51,22 +56,15 @@ if config["map"] == "map_to_ganome":
     include: "rules/Visualisation.smk"
 
 
-"""
 elif config["map"] == "map_to_transcriptome":
 
     rule all:
         input:
-            #QC
-            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
-            #Step1G_align
-            expand("Step1G/{sample}.sorted.bam", sample=getlist_all()),
-            #Step2G_assess_align
-            expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_all()),
-            expand("Step2G/{sample}.r", sample=getlist_all())
+            #Step1T_align
+            #Step2T_assess_align
 
-    include: "rules/quality_control.smk"
     include: "rules/index_transT.smk"
     include: "rules/Step1T_align_quant.smk"
     include: "rules/Step2T_diffexp.smk"
     include: "rules/Visualisation.smk"
-"""
+
