@@ -29,10 +29,10 @@ rule all:
         #QC
         expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
         #Step1G_align
-        expand("Step1G_align/{sample}.sorted.bam", sample=getlist_id()),
+        expand("Step1G/{sample}.sorted.bam", sample=getlist_id()),
         #Step2G_assess_align
-        expand("Step2G_assess_align/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
-        expand("Step2G_assess_align/{sample}.r", sample=getlist_id()),
+        expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
+        expand("Step2G/{sample}.r", sample=getlist_id())
 
 
 include: "rules/quality_control.smk"
