@@ -1,11 +1,10 @@
 container: "docker://condaforge/mambaforge"
 
-
 rule summary_stat:
     input:
-        "step1/{sample}.sorted.bam",
+        "Step1G/{sample}.sorted.bam",
     output:
-        "step2/{sample}.samtools_flagstat.txt",
+        "Step2G/{sample}.samtoolsflagstat.txt",
     conda:
         "envs/step2.yaml"
     shell:
@@ -14,25 +13,25 @@ rule summary_stat:
 
 rule alignment_rate:
     input:
-        expand("step2/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
+        expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
     conda:
         "envs/step2.yaml"
     output:
-        "step2/alignment_rate.csv",
+        "Step2G/alignment_rate.csv",
     script:
         "scripts/alignment_rate.py"
 
 
 rule RNASeqQC:
     input:
-        "step1/{sample}.sorted.bam",
+        "Step1G/{sample}.sorted.bam",
     params:
-        config["gtf"],
+        config["gtfqc"],
     output:
-        directory("step2/{sample}.r"),
+        directory("Step2G/{sample}.r"),
     threads: config["th"]["normal"]
     log:
-        "step2/{sample}r.log",
+        "Step2G/{sample}r.log",
     conda:
         "envs/rnaseqc.yaml"
     shell:
@@ -41,10 +40,10 @@ rule RNASeqQC:
 
 rule rnaseqc_scr:
     input:
-        expand("step2/{sample}.r", sample=getlist_id()),
+        expand("Step2G/{sample}.r", sample=getlist_id()),
     conda:
         "envs/step2.yaml"
     output:
-        "step2/rnaseqc_sheet.csv",
+        "Step2G/rnaseqc_sheet.csv",
     script:
         "scripts/rnaseqc_sheet.py"
