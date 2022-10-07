@@ -1,7 +1,3 @@
-#QC
-trim: yes                  # yes or no
-adapter: "nextera"         # "illumina" or "nextera"
-
 #index
 IndexAssembly: "hisat2"                 # "hisat2" or "kallisto" or  directary of index in folder called "Assembly"
 indexname: "genomehuman38"              # Name the index or Type the name of index you have in "Assembly" folder
