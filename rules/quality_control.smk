@@ -1,17 +1,16 @@
-rule FastQC:
-    """
-    QC on fastq read data
-    """
-    output:
-        "QC/{sample}_fastqc.zip",
-    threads: 1
-    params:
-        i="input/",
-        ext=config["ext"]["f"],
-    container:
-        "docker://staphb/fastqc"
-    shell:
-        "fastqc {params.i}{wildcards.sample}{params.ext} -t {threads} -o QC"
+if config["end"] == "paired":
+
+    rule FastQC:
+        output:
+            "QC/{sample}_fastqc.zip",
+        threads: 1
+        params:
+            i="input/",
+            ext=config["ext"]["f"],
+        container:
+            "docker://staphb/fastqc"
+        shell:
+            "fastqc {params.i}{wildcards.sample}{params.ext} -t {threads} -o QC"
 
 
 rule multiqc:
