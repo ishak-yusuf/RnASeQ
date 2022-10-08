@@ -1,0 +1,9 @@
+channels:
+  - r
+  - bioconda
+  - r
+
+dependencies:
+  - r
+  - bioconductor-deseq2
+  - r-tidyverse
