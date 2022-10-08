@@ -5,23 +5,16 @@ import os
 
 
 def getlist_all():
-    id_list = []
-    for i in os.listdir("input/"):
-        # gets list of fastqs:
-        if i.endswith(f"{config ['ext'] ['f']}"):
-            id = os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")]
-            id_list.append(id)
+    id_list = [os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f']}")]
     return id_list
-
 
 def getlist_id():
-    id_list = []
-    for i in os.listdir("input/"):
-        # gets list of fastqs:
-        if i.endswith(f"{config ['ext'] ['f1']}"):
-            id = os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")]
-            id_list.append(id)
+    id_list = [os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f1']}") ]
     return id_list
+
+def meta_all():
+    newlist = [i for i in os.listdir("input/meta/") if i.endswith(f".csv")]
+    return meta
 
 rule all:
     input:
