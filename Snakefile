@@ -13,7 +13,7 @@ def getlist_id():
     return id_list
 
 def meta_all():
-    newlist = [i for i in os.listdir("input/meta/") if i.endswith(f".csv")]
+    newlist = [os.path.basename(i)[: -len(".csv")] for i in os.listdir("input/meta/") if i.endswith(f".csv")]
     return meta
 
 rule all:
@@ -39,6 +39,7 @@ if config["map"] == "map_to_ganome":
             #Step3G_featurecount
             "Step3G/counts_all.txt",
             #Step4G_diffexp
+            expand("Step4G/{sample}_normalized_table.csv", sample=meta_all()),
             #Visualisation
 
     include: "rules/index_genomeG.smk"
