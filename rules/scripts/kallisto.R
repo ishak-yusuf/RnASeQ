@@ -1,7 +1,9 @@
 # packages
-
 library(tidyverse)
 library(tximport)
+library(edgeR)
+library(limma)
+library(matrixStats)
 
 targets <- read.csv(snakemake@input[['metadata']], header = TRUE, row.names = 1)
 
