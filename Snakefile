@@ -75,7 +75,7 @@ elif config["map"] == "Transcriptome":
     rule transcriptome:
         input:
             #Step1T_align
-            expand("Step1T/{sample}", sample=getlist_id())
+            expand("Step1T/{sample}", sample=getlist_id()),
             #Step2T_assess_align
             expand("Step2T/{sample}_normalised_table.csv", sample=meta_all()),
 
