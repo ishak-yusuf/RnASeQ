@@ -7,7 +7,7 @@ library(matrixStats)
 
 targets <- read.csv(snakemake@input[['metadata']], header = TRUE, row.names = 1)
 
-path <- file.path(row.names(targets), "abundance.tsv") # set file paths to your mapped data
+path <- file.path(paste("Step1T/",row.names(targets), sep = ''), "abundance.tsv") # set file paths to your mapped data
 
 Txi_gene <- tximport(path,
                      type = "kallisto",
