@@ -33,8 +33,7 @@ rule QC:
 include: "rules/quality_control.smk"
 
 
-
-if config["map"] == "map_to_ganome":
+if config["map"] == "Ganome":
 
     rule ganome:
         input:
@@ -54,18 +53,18 @@ if config["map"] == "map_to_ganome":
     include: "rules/Step2G_assess_align.smk"
     include: "rules/Step3G_featurecount.smk"
     include: "rules/Step4G_diffexp.smk"
-    include: "rules/Visualisation.smk"
 
 
-elif config["map"] == "map_to_transcriptome":
+elif config["map"] == "Transcriptome":
 
     rule transcriptome:
         input:
             #Step1T_align
+
             #Step2T_assess_align
+
 
     include: "rules/index_transT.smk"
     include: "rules/Step1T_align_quant.smk"
     include: "rules/Step2T_diffexp.smk"
-    include: "rules/Visualisation.smk"
 
