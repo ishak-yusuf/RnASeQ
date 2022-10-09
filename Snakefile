@@ -3,9 +3,12 @@ configfile: "config.yaml"
 
 import os
 
+# get all fastq files
 def getlist_all():
     id_list = [os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f']}")]
     return id_list
+
+# get all id fastq files
 
 if config ['end'] == 'paired':
     def getlist_id():
@@ -14,11 +17,13 @@ if config ['end'] == 'paired':
 else:
     getlist_id() == getlist_all()
 
+
 def meta_all():
     newlist = [os.path.basename(i)[: -len(".csv")] for i in os.listdir("input/meta/") if i.endswith(f".csv")]
     return meta
 
-rule all:
+
+rule QC:
     input:
         #QC
         expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
@@ -31,7 +36,7 @@ include: "rules/quality_control.smk"
 
 if config["map"] == "map_to_ganome":
 
-    rule all:
+    rule ganome:
         input:
             #Step1G_align
             expand("Step1G/{sample}.sorted.bam", sample=getlist_id()),
@@ -41,7 +46,7 @@ if config["map"] == "map_to_ganome":
             #Step3G_featurecount
             "Step3G/counts_all.txt",
             #Step4G_diffexp
-            expand("Step4G/{sample}_normalized_table.csv", sample=meta_all()),
+            expand("Step4G/{sample}_normalised_table.csv", sample=meta_all()),
             #Visualisation
 
     include: "rules/index_genomeG.smk"
@@ -54,7 +59,7 @@ if config["map"] == "map_to_ganome":
 
 elif config["map"] == "map_to_transcriptome":
 
-    rule all:
+    rule transcriptome:
         input:
             #Step1T_align
             #Step2T_assess_align
