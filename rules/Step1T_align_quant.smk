@@ -3,7 +3,7 @@ container: "docker://condaforge/mambaforge"
 
 if config["end"] == "paired":
 
-    rule salmon_alignmant:
+    rule kallisto_alignmant:
         output:
             directory("Step1T/{sample}"),
         params:
@@ -32,7 +32,7 @@ if config["end"] == "paired":
 
 elif config["end"] == "single":
 
-    rule salmon_alignmant:
+    rule kallisto_alignmant:
         output:
             directory("Step1T/{sample}"),
         params:
@@ -43,10 +43,14 @@ elif config["end"] == "single":
         threads: config["th"]["normal"]
         message:
             "--- Alignment paired transcriptome with salmon"
+        log:
+            "Step1T/{sample}.log",
+        resources:
+            mem_gb=16,
         conda:
             "envs/align.yaml"
         shell:
             """
             kallisto quant -i {params.a}{params.ref} -o {wildcards.sample}\
-            -t {threads} {params.i}{wildcards.sample}{params.f} &> HS01.log
+            -t {threads} {params.i}{wildcards.sample}{params.f} 2> {log}
             """
