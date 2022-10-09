@@ -10,6 +10,7 @@ metadata <- read.csv(snakemake@input[['metadata']], header = TRUE, row.names = 1
 fc <- select(featurecount, c(rownames(metadata)))
 
 
+
 dds <- DESeqDataSetFromMatrix(countData = fc,
                                     colData = metadata,
                                     design = ~ condition)
