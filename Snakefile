@@ -3,14 +3,16 @@ configfile: "config.yaml"
 
 import os
 
-
 def getlist_all():
     id_list = [os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f']}")]
     return id_list
 
-def getlist_id():
-    id_list = [os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f1']}") ]
-    return id_list
+if config ['end'] == 'paired':
+    def getlist_id():
+        id_list = [os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f1']}") ]
+        return id_list
+else:
+    getlist_id() == getlist_all()
 
 def meta_all():
     newlist = [os.path.basename(i)[: -len(".csv")] for i in os.listdir("input/meta/") if i.endswith(f".csv")]
