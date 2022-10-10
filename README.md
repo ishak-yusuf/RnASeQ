@@ -3,13 +3,14 @@
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RnASeQ is to perform measuring and comparing the levels of gene expression in a wide variety of species and conditions. It supports mapping of fastq rna-seq raw reads to genome and transcriptome assemblies and visualise differential gene expression analysis.
+RnASeQ performs measuring and comparing the levels of gene expression in a wide variety of species and conditions. It supports mapping of fastq rna-seq raw reads  to both genome and transcriptome. 
 
 
 # Workflow:
-<p align="left">
-  <img  src="https://user-images.githubusercontent.com/66043140/194823648-82ac9690-c67d-47d5-a5e9-09f60d6f3471.png">
+<p align="center">
+  <img  src="https://user-images.githubusercontent.com/66043140/194824668-eec998b9-2361-4452-8f5f-9da64132adb0.jpg">
   </p>
+
 
 
 # Tools: 
