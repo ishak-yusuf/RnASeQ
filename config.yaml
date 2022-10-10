@@ -1,14 +1,14 @@
 # index
-IndexAssembly: "hisat2"    # "hisat2" or "kallisto" or  " "
+IndexAssembly: "hisat2"    # "hisat2" with genome or "kallisto" with transcriptome or  " " if you have index already
 indexname: "genomehuman38" # Name the index or Type the name of index in "Assembly"
 
 # Direct the analysis
-map: "Ganome"       # "Ganome" or  "Transcriptome" or "Noval_splice_variants"
+map: "Genome"       # "Genome" or  "Transcriptome" 
 end: "paired"       # "single" or "paired"
 ext:                # extension of fastq file
   f: ".fastq.gz"    # any extanstion of fastq file (paired & single)
-  f1: "_R1_001"     # any extanstion of fastq file (paired)
-  f2: "_R2_001"     # any extanstion of fastq file (paired)
+  f1: "_R1_001.fastq.gz"     # any extanstion of fastq file (paired)
+  f2: "_R2_001.fastq.gz"     # any extanstion of fastq file (paired)
   strandness: "RF"  # paired "FR" or "RF"  / single "F" or "R"
 
 # Threads
@@ -17,5 +17,6 @@ th:
   normal: 16
 
 # Assembly and Annotation files
-Assembly: "Assembly/genome.fa" #gene/transcriptome fasta file
-gtf: "Assembly/genome.gtf"     #gene/transcriptome gtf file
+Assembly: "Assembly/genome.fa" #genome/transcriptome fasta file
+gtf: "Assembly/genome.gtf"     #genome/transcriptome gtf file
+gtfqc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
