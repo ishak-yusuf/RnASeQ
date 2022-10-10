@@ -3,7 +3,7 @@ container: "docker://condaforge/mambaforge"
 
 rule kallisto:
     input:
-        metadata="input/meta/{sample}",
+        metadata="input/{sample}",
     output:
         "Step2T/{sample}",
     conda:
