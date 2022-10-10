@@ -13,5 +13,5 @@ if config["IndexAssembly"] == "kallisto":
         shell:
             """
             kallisto index -i {params.name} {input.Transcriptome}
-            mv *.index Assembly
+            mv *{params.name}* Assembly
             """
