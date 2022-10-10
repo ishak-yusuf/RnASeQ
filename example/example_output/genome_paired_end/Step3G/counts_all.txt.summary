@@ -1,0 +1,15 @@
+Status	Step1G/SRR1039513.sorted.bam	Step1G/SRR1039512.sorted.bam	Step1G/SRR1039508.sorted.bam	Step1G/SRR1039509.sorted.bam
+Assigned	66194	72619	68213	68972
+Unassigned_Unmapped	12034	6942	10202	10221
+Unassigned_Read_Type	0	0	0	0
+Unassigned_Singleton	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0
+Unassigned_Chimera	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0
+Unassigned_Duplicate	0	0	0	0
+Unassigned_MultiMapping	4180	3865	5968	4515
+Unassigned_Secondary	0	0	0	0
+Unassigned_NonSplit	0	0	0	0
+Unassigned_NoFeatures	3866	3128	4207	3643
+Unassigned_Overlapping_Length	0	0	0	0
+Unassigned_Ambiguity	10384	15411	10972	11985
