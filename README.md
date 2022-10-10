@@ -3,8 +3,13 @@
 [![Conda:hisats](https://img.shields.io/badge/snakemake-v7.14.0-green.svg)](https://snakemake.github.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-RnASeQ performs measuring and comparing the levels of gene expression in a wide variety of species and conditions. It supports mapping of fastq rna-seq raw reads  to both genome and transcriptome. 
+RnASeQ performs measuring and comparing the levels of gene expression in a wide variety of species and conditions. It supports mapping of fastq rna-seq raw reads  to both genome and transcriptome. The RnASeQ is planned to include various types of RNA-seq analysis
 
+- Functional profiling with RNA-seq
+- Identify short variants (SNPs and Indels) in RNAseq data
+- Alternative splicing analysis
+- Small RNAs
+- Gene fusion discovery
 
 # Workflow:
 <p align="center">
@@ -92,6 +97,8 @@ The five folders re going to be extracted.
 
 4- **Visualisation** : folder has volcanoplot, MA plot and Heatmap
 
-# Main Reference:
+# Main References:
 
-Zhang, X., Jonassen, I. RASflow: an RNA-Seq analysis workflow with Snakemake. BMC Bioinformatics 21, 110 (2020). https://doi.org/10.1186/s12859-020-3433-x
+- Zhang, X., Jonassen, I. RASflow: an RNA-Seq analysis workflow with Snakemake. BMC Bioinformatics 21, 110 (2020). https://doi.org/10.1186/s12859-020-3433-x
+
+- Conesa, A., Madrigal, P., Tarazona, S. et al. A survey of best practices for RNA-seq data analysis. Genome Biol 17, 13 (2016). https://doi.org/10.1186/s13059-016-0881-8
