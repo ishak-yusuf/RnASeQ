@@ -1,17 +1,25 @@
 channels:
-  - r
-  - bioconda
-  - r
-  - bioconda
   - conda-forge
   - bioconda
-  - bioconda
-
+  - r
+  - defaults
 dependencies:
+# command tool installs
   - R
+# r channel installs
+  - r-yaml
+  - r-statmod
+  - r-gplots
   - kallisto
+# conda-forge channel installs
+  - r-heatmap.plus
+  - r-readr
+  - r-hash
+# bioconda channel installs
+  - bioconductor-edger
+  - bioconductor-deseq2
   - r-tidyverse
   - bioconductor-tximport
   - r-matrixstats
-  - bioconductor-edger
-  - bioconductor-limma
+
+
