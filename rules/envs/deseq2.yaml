@@ -1,9 +1,14 @@
 channels:
-  - r
+  - conda-forge
   - bioconda
   - r
-
+  - defaults
 dependencies:
+# command tool installs
   - R
+# r channel installs
+  - r-yaml
+  - r-statmod
+  - bioconductor-edger
   - bioconductor-deseq2
-  - r-tidyverse
+  - bioconductor-tximport
