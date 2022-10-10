@@ -13,7 +13,7 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 # Workflow:
 <p align="center">
-  <img  src="https://user-images.githubusercontent.com/66043140/194843290-ee3aa0df-f8bb-484a-9b04-7577dba9e45a.svg" >
+  <img  src="https://user-images.githubusercontent.com/66043140/194846073-8548eff8-3e5b-4a00-9481-4be4811d92c3.png" >
   </p>
 
 
@@ -64,9 +64,24 @@ th:
 # Assembly and Annotation files
 Assembly: "Assembly/genome.fa" #genome/transcriptome fasta file
 gtf: "Assembly/genome.gtf"     #genome/transcriptome gtf file
-gtf_qc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
+gtfqc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
 ```
-5-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
+5- Perpare file.csv for each compared groups (case vs control) (use Excel to make the file as shown below)
+
+```
+,condition
+SRR1039513,case
+SRR1039512,case
+SRR1039508,control
+SRR1039509,control
+```
+You can design many file.csv but you have to ensure that
+- They have different file name
+- Sample name is mateched with fastq file name for example:
+sample name: SRR1039513 
+fastq file: SRR1039513_R1_001.fastq.gz SRR1039513_R2_001.fastq.gz (paired-end) or SRR1039513.fastq.gz (single-end)
+
+6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
 # Expected outcome:
 
