@@ -4,6 +4,6 @@ channels:
   - r
 
 dependencies:
-  - r
+  - R
   - bioconductor-deseq2
   - r-tidyverse
