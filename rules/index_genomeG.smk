@@ -13,5 +13,5 @@ if config["IndexAssembly"] == "hisat2":
         shell:
             """
             hisat2-build -p {threads} {input.genome} {params.name}
-            mv *ht2 Assembly
+            mv *{params.name}* Assembly
             """
