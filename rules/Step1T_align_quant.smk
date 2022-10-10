@@ -1,37 +1,56 @@
-container:"docker://condaforge/mambaforge"
+container: "docker://condaforge/mambaforge"
 
-if config ["end"] == "paired":
-        rule salmon_alignmant:
-                output: quant_dir=  directory("stetp1/{sample}")
-                params:
-                        ref=config["gen"],
-                        strandness=config["ext"]["strandness"],
-                        f1=config["ext"]["f1"],
-                        f2=config["ext"]["f2"],
-                        i="input/",
-                threads: config["th"]["normal"]
-                message:
-                        "--- Alignment paired transcriptome with salmon"
-                conda: "envs/align.yaml"
-                shell:"""
-                        salmon quant -i {params.ref} -l A -1 {params.i}{wildcards.sample}{params.f1} \
-                        -2 {params.i}{wildcards.sample}{params.f2} \
-                        -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
-                        """
 
-elif config ["end"] == "single":
-        rule salmon_alignmant:
-                output: quant_dir= directory("stetp1/{sample}")
-                params:
-                        ref=config["gen"],
-                        strandness=config["ext"]["strandness"],
-                        f=config["ext"]["f"],
-                        i="input/",
-                threads: config["th"]["normal"]
-                message:
-                        "--- Alignment paired transcriptome with salmon"
-                conda: "envs/align.yaml"
-                shell:"""
-                        salmon quant -i {params.ref} -l A -r {params.i}{wildcards.sample}{params.f} \
-                        -o {output.quant_dir} -p {thread} --seqBias --useVBOpt --validateMappings
-                        """
+if config["end"] == "paired":
+
+    rule kallisto_alignmant:
+        output:
+            directory("Step1T/{sample}"),
+        params:
+            ref=config["indexname"],
+            strandness=config["ext"]["strandness"],
+            f1=config["ext"]["f1"],
+            f2=config["ext"]["f2"],
+            i="input/",
+            a="Assembly/",
+        threads: config["th"]["normal"]
+        message:
+            "--- Alignment paired genome with Hisat"
+        log:
+            "Step1T/{sample}.log",
+        resources:
+            mem_gb=16,
+        conda:
+            "envs/align.yaml"
+        shell:
+            """
+            kallisto quant -i {params.a}{params.ref} -o {wildcards.sample} \
+            {params.i}{wildcards.sample}{params.f1}  {params.i}{wildcards.sample}{params.f2} \
+            -t {threads} 2> {log}
+            """
+
+
+elif config["end"] == "single":
+
+    rule kallisto_alignmant:
+        output:
+            directory("Step1T/{sample}"),
+        params:
+            ref=config["indexname"],
+            f=config["ext"]["f"],
+            i="input/",
+            a="Assembly/",
+        threads: config["th"]["normal"]
+        message:
+            "--- Alignment paired transcriptome with salmon"
+        log:
+            "Step1T/{sample}.log",
+        resources:
+            mem_gb=16,
+        conda:
+            "envs/align.yaml"
+        shell:
+            """
+            kallisto quant -i {params.a}{params.ref} -o {wildcards.sample}\
+            -t {threads} {params.i}{wildcards.sample}{params.f} 2> {log}
+            """

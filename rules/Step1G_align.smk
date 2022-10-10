@@ -1,6 +1,8 @@
-container:"docker://condaforge/mambaforge"
+container: "docker://condaforge/mambaforge"
 
-if config ["end"] == "paired":
+
+if config["end"] == "paired":
+
     rule hisat2_alignment:
         output:
             "Step1G/{sample}.sam",
@@ -10,7 +12,7 @@ if config ["end"] == "paired":
             f1=config["ext"]["f1"],
             f2=config["ext"]["f2"],
             i="input/",
-            a="Assembly/"
+            a="Assembly/",
         threads: config["th"]["normal"]
         message:
             "--- Alignment paired genome with Hisat"
@@ -20,11 +22,13 @@ if config ["end"] == "paired":
             mem_gb=16,
         conda:
             "envs/align.yaml"
-        shell:"""
+        shell:
+            """
             hisat2 -q --rna-strandness {params.strandness} -x {params.a}{params.ref} \
             -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads}\
             -S {output}
             """
+
 
 elif config["end"] == "single":
 
@@ -36,8 +40,7 @@ elif config["end"] == "single":
             strandness=config["ext"]["strandness"],
             f=config["ext"]["f"],
             i="input/",
-            a="Assembly/"
-
+            a="Assembly/",
         threads: config["th"]["normal"]
         message:
             "--- Alignment single genome with Hisat"
@@ -47,7 +50,8 @@ elif config["end"] == "single":
             mem_gb=16,
         conda:
             "envs/align.yaml"
-        shell:"""
+        shell:
+            """
             hisat2 -q --rna-strandness {params.strandness} -x {params.a}{params.ref} \
             -U {params.i}{wildcards.sample}{params.f}  -p {threads}\
             -S {output}
@@ -55,21 +59,19 @@ elif config["end"] == "single":
 
 
 rule bams:
-    input: "Step1G/{sample}.sam"
-    output: "Step1G/{sample}.sorted.bam"
+    input:
+        "Step1G/{sample}.sam",
+    output:
+        "Step1G/{sample}.sorted.bam",
     threads: config["th"]["normal"]
-    conda: "envs/align.yaml"
-    params: "Step1G"
-    shell: """
+    conda:
+        "envs/align.yaml"
+    params:
+        "Step1G",
+    shell:
+        """
         samtools view -@ {threads} -bh {input} > {params}{wildcards.sample}.bam
         rm {input}
         samtools sort -@ {threads} {params}{wildcards.sample}.bam > {output}
         rm {params}{wildcards.sample}.bam
         """
-
-
-
-
-
-
-
