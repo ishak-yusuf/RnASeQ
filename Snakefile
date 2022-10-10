@@ -4,17 +4,13 @@ configfile: "config.yaml"
 import os
 
 # get all fastq files
-getlist_all = [os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")] \
- for i in os.listdir("input/") \
- if i.endswith(f"{config ['ext'] ['f']}")]
+getlist_all = [os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f']}")]
 
 
 # get all id fastq files
 
 if config["end"] == "paired":
-    getlist_id = [ os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")]\
-     for i in os.listdir("input/") \
-     if i.endswith(f"{config ['ext'] ['f1']}") ]
+    getlist_id = [ os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")] for i in os.listdir("input/") if i.endswith(f"{config ['ext'] ['f1']}") ]
 
 
 else:
@@ -22,7 +18,7 @@ else:
 
 
 
-meta = [ os.path.basename(i) for i in os.listdir("input/") if i.endswith(".csv") ]
+meta_all = [ os.path.basename(i) for i in os.listdir("input/") if i.endswith(".csv") ]
 
 
 
@@ -31,18 +27,18 @@ if config["map"] == "Genome":
     rule Genome:
         input:
             #QC
-            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
+            expand("QC/{sample}_fastqc.zip", sample= getlist_all ),
             "QC/multiqc_report.html",
             "QC/seqkit_stats.txt",
             #Step1G_align
-            expand("Step1G/{sample}.sorted.bam", sample=getlist_id()),
+            expand("Step1G/{sample}.sorted.bam", sample=getlist_id),
             #Step2G_assess_align
-            expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
-            expand("Step2G/{sample}.r", sample=getlist_id()),
+            expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id),
+            expand("Step2G/{sample}.r", sample=getlist_id),
             #Step3G_featurecount
             "Step3G/counts_all.txt",
             #Step4G_diffexp
-            expand("Step4G/{sample}", sample=meta_all()),
+            expand("Step4G/{sample}", sample=meta_all),
 
     include: "rules/index_genomeG.smk"
     include: "rules/quality_control.smk"
