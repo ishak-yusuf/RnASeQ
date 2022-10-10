@@ -1,0 +1,17 @@
+channels:
+  - r
+  - bioconda
+  - r
+  - bioconda
+  - conda-forge
+  - bioconda
+  - bioconda
+
+dependencies:
+  - r
+  - kallisto
+  - r-tidyverse
+  - bioconductor-tximport
+  - r-matrixstats
+  - bioconductor-edger
+  - bioconductor-limma
