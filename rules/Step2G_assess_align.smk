@@ -13,7 +13,7 @@ rule summary_stat:
 
 rule alignment_rate:
     input:
-        expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id()),
+        expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id),
     conda:
         "envs/step2.yaml"
     output:
@@ -40,7 +40,7 @@ rule RNASeqQC:
 
 rule rnaseqc_scr:
     input:
-        expand("Step2G/{sample}.r", sample=getlist_id()),
+        expand("Step2G/{sample}.r", sample=getlist_id),
     conda:
         "envs/step2.yaml"
     output:

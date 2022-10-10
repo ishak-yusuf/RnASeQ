@@ -4,38 +4,25 @@ configfile: "config.yaml"
 import os
 
 # get all fastq files
-def getlist_all():
-    id_list = [
-        os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")]
-        for i in os.listdir("input/")
-        if i.endswith(f"{config ['ext'] ['f']}")
-    ]
-    return id_list
+getlist_all = [os.path.basename(i)[: -len(f"{config ['ext'] ['f']}")] \
+ for i in os.listdir("input/") \
+ if i.endswith(f"{config ['ext'] ['f']}")]
 
 
 # get all id fastq files
 
 if config["end"] == "paired":
+    getlist_id = [ os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")]\
+     for i in os.listdir("input/") \
+     if i.endswith(f"{config ['ext'] ['f1']}") ]
 
-    def getlist_id():
-        id_list = [
-            os.path.basename(i)[: -len(f"{config ['ext'] ['f1']}")]
-            for i in os.listdir("input/")
-            if i.endswith(f"{config ['ext'] ['f1']}")
-        ]
-        return id_list
 
 else:
-    getlist_id() == getlist_all()
+    getlist_id =  getlist_all.copy()
 
 
-def meta_all():
-    meta = [
-        os.path.basename(i)
-        for i in os.listdir("input/")
-        if i.endswith(".csv")
-    ]
-    return meta
+
+meta = [ os.path.basename(i) for i in os.listdir("input/") if i.endswith(".csv") ]
 
 
 

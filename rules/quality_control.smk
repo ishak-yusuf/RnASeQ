@@ -13,7 +13,7 @@ rule FastQC:
 
 rule multiqc:
     input:
-        expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
+        expand("QC/{sample}_fastqc.zip", sample=getlist_all),
     output:
         "QC/multiqc_report.html",
     params:
@@ -26,7 +26,7 @@ rule multiqc:
 
 rule seqkit:
     input:
-        expand("input/{sample}{FILE}", sample=getlist_all(), FILE=config["ext"]["f"]),
+        expand("input/{sample}{FILE}", sample=getlist_all, FILE=config["ext"]["f"]),
     output:
         "QC/seqkit_stats.txt",
     threads: config["th"]["normal"]

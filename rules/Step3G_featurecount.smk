@@ -1,6 +1,6 @@
 rule featureCounts:
     input:
-        expand("Step1G/{sample}.sorted.bam", sample=getlist_id()),
+        expand("Step1G/{sample}.sorted.bam", sample=getlist_id),
     output:
         "Step3G/counts_all.txt",
     params:
