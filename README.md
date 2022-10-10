@@ -64,7 +64,7 @@ th:
 # Assembly and Annotation files
 Assembly: "Assembly/genome.fa" #genome/transcriptome fasta file
 gtf: "Assembly/genome.gtf"     #genome/transcriptome gtf file
-gtf_qc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
+gtfqc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
 ```
 5-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
