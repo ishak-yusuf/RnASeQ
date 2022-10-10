@@ -7,7 +7,7 @@ RnASeQ is to perform measuring and comparing the levels of gene expression in a 
 
 
 # Workflow:
-<p >
+<p align="left">
   <img  src="https://user-images.githubusercontent.com/66043140/194823648-82ac9690-c67d-47d5-a5e9-09f60d6f3471.png">
   </p>
 
