@@ -30,7 +30,7 @@ else:
 
 
 def meta_all():
-    newlist = [
+    meta = [
         os.path.basename(i)[: -len(".csv")]
         for i in os.listdir("input/meta/")
         if i.endswith(f".csv")
@@ -38,21 +38,14 @@ def meta_all():
     return meta
 
 
-rule QC:
-    input:
-        #QC
-        expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
-        "QC/multiqc_report.html",
-        "QC/seqkit_stats.txt",
-
-
-include: "rules/quality_control.smk"
-
-
-if config["map"] == "Ganome":
+if config["map"] == "Genome":
 
     rule ganome:
         input:
+            #QC
+            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
+            "QC/multiqc_report.html",
+            "QC/seqkit_stats.txt",
             #Step1G_align
             expand("Step1G/{sample}.sorted.bam", sample=getlist_id()),
             #Step2G_assess_align
@@ -64,6 +57,7 @@ if config["map"] == "Ganome":
             expand("Step4G/{sample}_normalised_table.csv", sample=meta_all()),
 
     include: "rules/index_genomeG.smk"
+    include: "rules/quality_control.smk"
     include: "rules/Step1G_align.smk"
     include: "rules/Step2G_assess_align.smk"
     include: "rules/Step3G_featurecount.smk"
@@ -74,11 +68,17 @@ elif config["map"] == "Transcriptome":
 
     rule transcriptome:
         input:
+            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
+            "QC/multiqc_report.html",
+            "QC/seqkit_stats.txt",
             #Step1T_align
             expand("Step1T/{sample}", sample=getlist_id()),
             #Step2T_assess_align
             expand("Step2T/{sample}_normalised_table.csv", sample=meta_all()),
 
+
+
     include: "rules/index_transT.smk"
+    include: "rules/quality_control.smk"
     include: "rules/Step1T_align_quant.smk"
     include: "rules/Step2T_diffexp.smk"
