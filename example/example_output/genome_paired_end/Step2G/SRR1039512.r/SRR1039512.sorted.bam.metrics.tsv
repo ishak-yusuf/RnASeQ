@@ -1,0 +1,79 @@
+Sample	SRR1039512.sorted.bam
+Mapping Rate	0.930178
+Unique Rate of Mapped	1
+Duplicate Rate of Mapped	0
+Duplicate Rate of Mapped, excluding Globins	0
+Base Mismatch	0.0120868
+End 1 Mapping Rate	0.929333
+End 2 Mapping Rate	0.931023
+End 1 Mismatch Rate	0.0120699
+End 2 Mismatch Rate	0.0121036
+Expression Profiling Efficiency	0.719404
+High Quality Rate	0
+Exonic Rate	0.773405
+Intronic Rate	0.0601198
+Intergenic Rate	0.00539564
+Intragenic Rate	0.833524
+Ambiguous Alignment Rate	0.16108
+High Quality Exonic Rate	-nan
+High Quality Intronic Rate	-nan
+High Quality Intergenic Rate	-nan
+High Quality Intragenic Rate	-nan
+High Quality Ambiguous Alignment Rate	-nan
+Discard Rate	0
+rRNA Rate	0
+Chimeric Alignment Rate	0
+End 1 Sense Rate	0.455904
+End 2 Sense Rate	0.462016
+Avg. Splits per Read	0.0150732
+Alternative Alignments	2541
+Chimeric Reads	80
+Duplicate Reads	0
+End 1 Antisense	1129
+End 2 Antisense	1126
+End 1 Bases	2910537
+End 2 Bases	2915829
+End 1 Mapped Reads	46199
+End 2 Mapped Reads	46283
+End 1 Mismatches	35130
+End 2 Mismatches	35292
+End 1 Sense	946
+End 2 Sense	967
+Exonic Reads	71526
+Failed Vendor QC	0
+High Quality Reads	0
+Intergenic Reads	499
+Intragenic Reads	77086
+Ambiguous Reads	14897
+Intronic Reads	5560
+Low Mapping Quality	99424
+Low Quality Reads	92482
+Mapped Duplicate Reads	0
+Mapped Reads	92482
+Mapped Unique Reads	92482
+Mismatched Bases	70422
+Non-Globin Reads	92482
+Non-Globin Duplicate Reads	0
+Reads excluded from exon counts	0
+Reads used for Intron/Exon counts	92482
+rRNA Reads	0
+Total Bases	5826366
+Total Mapped Pairs	43460
+Total Reads	101965
+Unique Mapping, Vendor QC Passed Reads	99424
+Unpaired Reads	0
+Read Length	63
+Genes Detected	0
+Estimated Library Complexity	0
+Genes used in 3' bias	0
+Mean 3' bias	0
+Median 3' bias	0
+3' bias Std	0
+3' bias MAD_Std	0
+3' Bias, 25th Percentile	0
+3' Bias, 75th Percentile	0
+Median of Avg Transcript Coverage	0
+Median of Transcript Coverage Std	0
+Median of Transcript Coverage CV	0
+Median Exon CV	0
+Exon CV MAD	0

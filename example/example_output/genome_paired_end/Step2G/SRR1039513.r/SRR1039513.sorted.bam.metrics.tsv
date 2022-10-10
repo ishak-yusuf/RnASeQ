@@ -1,0 +1,79 @@
+Sample	SRR1039513.sorted.bam
+Mapping Rate	0.871965
+Unique Rate of Mapped	1
+Duplicate Rate of Mapped	0
+Duplicate Rate of Mapped, excluding Globins	0
+Base Mismatch	0.0103034
+End 1 Mapping Rate	0.873774
+End 2 Mapping Rate	0.870156
+End 1 Mismatch Rate	0.0102413
+End 2 Mismatch Rate	0.0103658
+Expression Profiling Efficiency	0.689158
+High Quality Rate	0
+Exonic Rate	0.790351
+Intronic Rate	0.0634609
+Intergenic Rate	0.0163136
+Intragenic Rate	0.853812
+Ambiguous Alignment Rate	0.129875
+High Quality Exonic Rate	-nan
+High Quality Intronic Rate	-nan
+High Quality Intergenic Rate	-nan
+High Quality Intragenic Rate	-nan
+High Quality Ambiguous Alignment Rate	-nan
+Discard Rate	0
+rRNA Rate	0
+Chimeric Alignment Rate	0
+End 1 Sense Rate	0.493159
+End 2 Sense Rate	0.489298
+Avg. Splits per Read	0.0545049
+Alternative Alignments	2668
+Chimeric Reads	298
+Duplicate Reads	0
+End 1 Antisense	4927
+End 2 Antisense	4939
+End 1 Bases	2586969
+End 2 Bases	2576259
+End 1 Mapped Reads	41063
+End 2 Mapped Reads	40893
+End 1 Mismatches	26494
+End 2 Mismatches	26705
+End 1 Sense	4794
+End 2 Sense	4732
+Exonic Reads	64774
+Failed Vendor QC	0
+High Quality Reads	0
+Intergenic Reads	1337
+Intragenic Reads	69975
+Ambiguous Reads	10644
+Intronic Reads	5201
+Low Mapping Quality	93990
+Low Quality Reads	81956
+Mapped Duplicate Reads	0
+Mapped Reads	81956
+Mapped Unique Reads	81956
+Mismatched Bases	53199
+Non-Globin Reads	81956
+Non-Globin Duplicate Reads	0
+Reads excluded from exon counts	0
+Reads used for Intron/Exon counts	81956
+rRNA Reads	0
+Total Bases	5163228
+Total Mapped Pairs	37878
+Total Reads	96658
+Unique Mapping, Vendor QC Passed Reads	93990
+Unpaired Reads	0
+Read Length	63
+Genes Detected	0
+Estimated Library Complexity	0
+Genes used in 3' bias	0
+Mean 3' bias	0
+Median 3' bias	0
+3' bias Std	0
+3' bias MAD_Std	0
+3' Bias, 25th Percentile	0
+3' Bias, 75th Percentile	0
+Median of Avg Transcript Coverage	0
+Median of Transcript Coverage Std	0
+Median of Transcript Coverage CV	0
+Median Exon CV	0
+Exon CV MAD	0
