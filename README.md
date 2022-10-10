@@ -13,9 +13,8 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 # Workflow:
 <p align="center">
-  <img  src="https://user-images.githubusercontent.com/66043140/194824668-eec998b9-2361-4452-8f5f-9da64132adb0.jpg">
+  <img  src="https://user-images.githubusercontent.com/66043140/194843290-ee3aa0df-f8bb-484a-9b04-7577dba9e45a.svg" >
   </p>
-
 
 
 # Tools: 
