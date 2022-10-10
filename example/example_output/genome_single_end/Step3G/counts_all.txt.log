@@ -1,0 +1,70 @@
+
+        ==========     _____ _    _ ____  _____  ______          _____  
+        =====         / ____| |  | |  _ \|  __ \|  ____|   /\   |  __ \ 
+          =====      | (___ | |  | | |_) | |__) | |__     /  \  | |  | |
+            ====      \___ \| |  | |  _ <|  _  /|  __|   / /\ \ | |  | |
+              ====    ____) | |__| | |_) | | \ \| |____ / ____ \| |__| |
+        ==========   |_____/ \____/|____/|_|  \_\______/_/    \_\_____/
+	  v2.0.1
+
+//========================== featureCounts setting ===========================\\
+||                                                                            ||
+||             Input files : 4 BAM files                                      ||
+||                           o SRR1039508.sorted.bam                          ||
+||                           o SRR1039509.sorted.bam                          ||
+||                           o SRR1039513.sorted.bam                          ||
+||                           o SRR1039512.sorted.bam                          ||
+||                                                                            ||
+||             Output file : counts_all.txt                                   ||
+||                 Summary : counts_all.txt.summary                           ||
+||              Annotation : Homo_sapiens.GRCh38.93.1.1.10M.gtf (GTF)         ||
+||      Dir for temp files : Step3G                                           ||
+||                                                                            ||
+||                 Threads : 48                                               ||
+||                   Level : meta-feature level                               ||
+||              Paired-end : no                                               ||
+||      Multimapping reads : not counted                                      ||
+|| Multi-overlapping reads : not counted                                      ||
+||   Min overlapping bases : 1                                                ||
+||                                                                            ||
+\\============================================================================//
+
+//================================= Running ==================================\\
+||                                                                            ||
+|| Load annotation file Homo_sapiens.GRCh38.93.1.1.10M.gtf ...                ||
+||    Features : 8478                                                         ||
+||    Meta-features : 334                                                     ||
+||    Chromosomes/contigs : 1                                                 ||
+||                                                                            ||
+|| Process BAM file SRR1039508.sorted.bam...                                  ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 49426                                                ||
+||    Successfully assigned alignments : 34297 (69.4%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR1039509.sorted.bam...                                  ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 49394                                                ||
+||    Successfully assigned alignments : 34718 (70.3%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR1039513.sorted.bam...                                  ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 48206                                                ||
+||    Successfully assigned alignments : 33156 (68.8%)                        ||
+||    Running time : 0.01 minutes                                             ||
+||                                                                            ||
+|| Process BAM file SRR1039512.sorted.bam...                                  ||
+||    Single-end reads are included.                                          ||
+||    Total alignments : 50704                                                ||
+||    Successfully assigned alignments : 36312 (71.6%)                        ||
+||    Running time : 0.00 minutes                                             ||
+||                                                                            ||
+|| Write the final count table.                                               ||
+|| Write the read assignment summary.                                         ||
+||                                                                            ||
+|| Summary of counting results can be found in file "Step3G/counts_all.txt.s  ||
+|| ummary"                                                                    ||
+||                                                                            ||
+\\============================================================================//
+

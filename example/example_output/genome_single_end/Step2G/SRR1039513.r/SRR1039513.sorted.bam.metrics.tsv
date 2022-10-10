@@ -1,0 +1,79 @@
+Sample	SRR1039513.sorted.bam
+Mapping Rate	0.872582
+Unique Rate of Mapped	1
+Duplicate Rate of Mapped	0
+Duplicate Rate of Mapped, excluding Globins	0
+Base Mismatch	0.0101674
+End 1 Mapping Rate	0
+End 2 Mapping Rate	0
+End 1 Mismatch Rate	-nan
+End 2 Mismatch Rate	-nan
+Expression Profiling Efficiency	0.690818
+High Quality Rate	0
+Exonic Rate	0.791694
+Intronic Rate	0.0646963
+Intergenic Rate	0.0156315
+Intragenic Rate	0.85639
+Ambiguous Alignment Rate	0.127978
+High Quality Exonic Rate	-nan
+High Quality Intronic Rate	-nan
+High Quality Intergenic Rate	-nan
+High Quality Intragenic Rate	-nan
+High Quality Ambiguous Alignment Rate	-nan
+Discard Rate	0
+rRNA Rate	0
+Chimeric Alignment Rate	0
+End 1 Sense Rate	-nan
+End 2 Sense Rate	-nan
+Avg. Splits per Read	0.0538445
+Alternative Alignments	1211
+Chimeric Reads	0
+Duplicate Reads	0
+End 1 Antisense	0
+End 2 Antisense	0
+End 1 Bases	0
+End 2 Bases	0
+End 1 Mapped Reads	0
+End 2 Mapped Reads	0
+End 1 Mismatches	0
+End 2 Mismatches	0
+End 1 Sense	0
+End 2 Sense	0
+Exonic Reads	32465
+Failed Vendor QC	0
+High Quality Reads	0
+Intergenic Reads	641
+Intragenic Reads	35118
+Ambiguous Reads	5248
+Intronic Reads	2653
+Low Mapping Quality	46995
+Low Quality Reads	41007
+Mapped Duplicate Reads	0
+Mapped Reads	41007
+Mapped Unique Reads	41007
+Mismatched Bases	26267
+Non-Globin Reads	41007
+Non-Globin Duplicate Reads	0
+Reads excluded from exon counts	0
+Reads used for Intron/Exon counts	41007
+rRNA Reads	0
+Total Bases	2583441
+Total Mapped Pairs	0
+Total Reads	48206
+Unique Mapping, Vendor QC Passed Reads	46995
+Unpaired Reads	46995
+Read Length	63
+Genes Detected	0
+Estimated Library Complexity	0
+Genes used in 3' bias	0
+Mean 3' bias	0
+Median 3' bias	0
+3' bias Std	0
+3' bias MAD_Std	0
+3' Bias, 25th Percentile	0
+3' Bias, 75th Percentile	0
+Median of Avg Transcript Coverage	0
+Median of Transcript Coverage Std	0
+Median of Transcript Coverage CV	0
+Median Exon CV	0
+Exon CV MAD	0

@@ -1,0 +1,5 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	SRR1039512	/home/genwork2/yes/QC/SRR1039512_fastqc.zip
+FastQC	all_sections	SRR1039508	/home/genwork2/yes/QC/SRR1039508_fastqc.zip
+FastQC	all_sections	SRR1039509	/home/genwork2/yes/QC/SRR1039509_fastqc.zip
+FastQC	all_sections	SRR1039513	/home/genwork2/yes/QC/SRR1039513_fastqc.zip
