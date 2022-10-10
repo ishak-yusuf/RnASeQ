@@ -6,4 +6,4 @@ channels:
 dependencies:
   - hisat2 == 2.2.1
   - kallisto == 0.48.0
-  - salmon
+  - samtools == 1.3
