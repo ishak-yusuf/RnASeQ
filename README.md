@@ -27,14 +27,13 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 | step4G | [![Conda:deseq2](https://img.shields.io/badge/bioconductor-deseq2-important.svg)](https://anaconda.org/bioconda/bioconductor-deseq2) |
 | transT + Step1T | [![docker:kallisto](https://img.shields.io/badge/docker-kallisto-important.svg)](https://hub.docker.com/r/zlskidmore/kallisto) |
 | Step2T  | [![bioconductor:edger](https://img.shields.io/badge/bioconductor-edger-important.svg)](https://anaconda.org/bioconda/bioconductor-edger) |
-| Visualisation | [![Conda:subread](https://img.shields.io/badge/conda--forge-r--ggplot2-important.svg)](https://anaconda.org/conda-forge/r-ggplot2)|
 
 
  
 # How to run RnASeQ on your machine:
 1- Install  <a href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html" target="_blank">snakemake </a>
 
-2- Download the *RnASeq* directory and add **paired FASTQ files** to *input* folder
+2- Download the *RnASeq* directory and add **paired-end** / **single-end** FASTQ files to *input* folder
 
 3- (genome only) Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a>
 
@@ -44,31 +43,28 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 4- Adjust **config.yaml** to be suitable for your case
 
 ```
-#QC
-trim: yes                  # yes or no
-adapter: "nextera"         # "illumina" or "nextera"
+# index
+IndexAssembly: "hisat2"    # "hisat2" with genome or "kallisto" with transcriptome or  " " if you have index already
+indexname: "genomehuman38" # Name the index or Type the name of index in "Assembly"
 
-#index
-index: yes                 # yes or no
+# Direct the analysis
+map: "Ganome"       # "Genome" or  "Transcriptome" 
+end: "paired"       # "single" or "paired"
+ext:                # extension of fastq file
+  f: ".fastq.gz"    # any extanstion of fastq file (paired & single)
+  f1: "_R1_001.fastq.gz"     # any extanstion of fastq file (paired)
+  f2: "_R2_001.fastq.gz"     # any extanstion of fastq file (paired)
+  strandness: "RF"  # paired "FR" or "RF"  / single "F" or "R"
 
-#Direct the analysis
-map: "map_to_ganome"       # "map_to_ganome" or  "map_to_transcriptome"
-end: "paired"              # "single" or "paired"
-ext:                       #extension of fastq file
-  f: ".fastq.gz"           # any extanstion of fastq file
-  f1: "_R1_001.fastq.gz"   # any extanstion of fastq file (forward)
-  f2: "_R2_001.fastq.gz"   # any extanstion of fastq file (reverse)
-  strandness: "RF"         # paired "FR" or "RF"  / single "F" or "R"
-
-#Threads
+# Threads
 th:
   max: 48
   normal: 16
 
 # Assembly and Annotation files
-gen: "genome/genome"        #gene/transcriptome index
-gene_fa: "genome/genome.fa" #gene/transcriptome fasta file
-gtf: "genome/genome.gtf"    #gene/transcriptome gtf file
+Assembly: "Assembly/genome.fa" #genome/transcriptome fasta file
+gtf: "Assembly/genome.gtf"     #genome/transcriptome gtf file
+gtf_qc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
 ```
 5-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
@@ -93,8 +89,6 @@ The five folders re going to be extracted.
 2- **Step1T**: folder has all TPM reads for each sample
 
 3- **Step2T**: folder has normalized data with edger
-
-4- **Visualisation** : folder has volcanoplot, MA plot and Heatmap
 
 # Main References:
 
