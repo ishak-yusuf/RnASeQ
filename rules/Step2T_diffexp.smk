@@ -1,11 +1,11 @@
 container: "docker://condaforge/mambaforge"
 
 
-rule deseq2:
+rule kallisto:
     input:
-        metadata="input/meta/{sample}.csv",
+        metadata="input/meta/{sample}",
     output:
-        "Step2T/{sample}_normalized_table.csv",
+        "Step2T/{sample}",
     conda:
         "envs/kallisto.yaml"
     script:

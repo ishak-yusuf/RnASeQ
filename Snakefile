@@ -53,13 +53,13 @@ elif config["map"] == "Transcriptome":
     rule Transcriptome:
         input:
             #QC
-            expand("QC/{sample}_fastqc.zip", sample=getlist_all()),
+            expand("QC/{sample}_fastqc.zip", sample= getlist_all),
             "QC/multiqc_report.html",
             "QC/seqkit_stats.txt",
             #Step1T_align
-            expand("Step1T/{sample}", sample=getlist_id()),
+            expand("Step1T/{sample}", sample= getlist_id),
             #Step2T_assess_align
-            expand("Step2T/{sample}_normalised_table.csv", sample=meta_all()),
+            expand("Step2T/{sample}", sample= meta_all),
 
     include: "rules/index_transT.smk"
     include: "rules/quality_control.smk"
