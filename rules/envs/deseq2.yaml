@@ -9,6 +9,12 @@ dependencies:
 # r channel installs
   - r-yaml
   - r-statmod
+  - r-gplots
+# conda-forge channel installs
+  - r-heatmap.plus
+  - r-readr
+  - r-hash
+# bioconda channel installs
   - bioconductor-edger
   - bioconductor-deseq2
-  - bioconductor-tximport
+  - r-tidyverse
