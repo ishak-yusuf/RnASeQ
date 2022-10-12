@@ -38,10 +38,14 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 3- Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a> (genome only) 
 
-
 ``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
 
-4- Adjust **config.yaml** to be suitable for your case
+4- Prepare metafiles by **metamaker.py**
+
+``` python3 metamaker.py -c metadata.csv ``` 
+
+
+5- Adjust **config.yaml** to be suitable for your case
 
 ```
 # index
@@ -67,7 +71,7 @@ Assembly: "Assembly/genome.fa" #genome/transcriptome fasta file
 gtf: "Assembly/genome.gtf"     #genome/transcriptome gtf file
 gtfqc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
 ```
-5- Perpare file.csv for each compared groups (case vs control) (use Excel to make the file as shown below)
+6- Perpare file.csv for each compared groups (case vs control) (use Excel to make the file as shown below)
 
 ```
 ,condition
@@ -82,7 +86,7 @@ You can design many file.csv but you have to ensure that
 sample name: SRR1039513 
 fastq file: SRR1039513_R1_001.fastq.gz SRR1039513_R2_001.fastq.gz (paired-end) or SRR1039513.fastq.gz (single-end)
 
-6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
+7-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
 # Expected outcome:
 
