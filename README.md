@@ -71,22 +71,7 @@ Assembly: "Assembly/genome.fa" #genome/transcriptome fasta file
 gtf: "Assembly/genome.gtf"     #genome/transcriptome gtf file
 gtfqc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
 ```
-6- Perpare file.csv for each compared groups (case vs control) (use Excel to make the file as shown below)
-
-```
-,condition
-SRR1039513,case
-SRR1039512,case
-SRR1039508,control
-SRR1039509,control
-```
-You can design many file.csv but you have to ensure that
-- They have different file name
-- Sample name is mateched with fastq file name for example:
-sample name: SRR1039513 
-fastq file: SRR1039513_R1_001.fastq.gz SRR1039513_R2_001.fastq.gz (paired-end) or SRR1039513.fastq.gz (single-end)
-
-7-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
+6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
 # Expected outcome:
 
