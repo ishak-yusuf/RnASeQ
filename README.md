@@ -31,11 +31,12 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
  
 # How to run RnASeQ on your machine:
-1- Install  <a href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html" target="_blank">snakemake </a>
+1- Install  <a href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html" target="_blank">snakemake </a> and 
+<a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank"> docker </a> 
 
 2- Download the *RnASeq* directory and add **paired-end** / **single-end** FASTQ files to *input* folder
 
-3- (genome only) Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a>
+3- Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a> (genome only) 
 
 
 ``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
