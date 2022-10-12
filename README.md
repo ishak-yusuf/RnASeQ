@@ -40,7 +40,7 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 ``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
 
-4- Prepare metafiles by **metamaker.py**
+4- Prepare metafiles by **metamaker.py** and add all files.csv to **input**
 
 ``` python3 metamaker.py -c metadata.csv ``` 
 
