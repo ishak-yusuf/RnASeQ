@@ -42,7 +42,7 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 4- Prepare metafiles by **metamaker.py** and add all files.csv to **input**
 
-``` python3 metamaker.py -c metadata.csv ``` 
+``` python3 metamaker.py metadata.csv ``` 
 
 
 5- Adjust **config.yaml** to be suitable for your case
