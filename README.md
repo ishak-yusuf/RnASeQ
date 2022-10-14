@@ -54,7 +54,7 @@ sampleB-2,control
 sampleB-3,control
 ```
 The importent point is that sampleA-1 is mateched with fastq files paired-end and single-end
-e.g: sampleA-1_r1.fq.gz , sampleA-1_r1.fq.gz (paired-end) or  sampleA-1.fq.gz (single-end)
+e.g:  **sampleA-1_r1.fq.gz** , **sampleA-1_r1.fq.gz** (paired-end) or  **sampleA-1.fq.gz** (single-end)
 
 If you have huge data, you can organise an excel sheet called **metadata_all.csv** as shown below:
 
