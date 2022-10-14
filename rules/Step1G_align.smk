@@ -68,7 +68,7 @@ rule bams:
     conda:
         "envs/align.yaml"
     params:
-        "Step1G",
+        "Step1G/",
     resources: meme_mb= 10000,
                rate_limit=1
     shell:
