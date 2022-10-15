@@ -38,7 +38,7 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 3- Prepare gtf for rnaseqc by **collapse_annotation.py** <a href="https://raw.githubusercontent.com/broadinstitute/gtex-pipeline/master/gene_model/collapse_annotation.py" target="_blank">here </a> (genome only) 
 
-``` python3 collapse_annotation.py genome.gtf genome_rnaseqc.gtf ``` 
+``` python3 collapse_annotation.py file.gtf file_adjusted.gtf ``` 
 
 4- Metadata table: 
 
