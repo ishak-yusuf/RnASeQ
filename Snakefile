@@ -31,7 +31,8 @@ if config["map"] == "Genome":
                 expand("QC/{sample}_fastqc.zip", sample= getlist_all ),
                 "QC/multiqc_report.html",
                 "QC/seqkit_stats.txt",
-            else:
+                
+            elif config["Align_bam"]:
                 #Step1G_align
                 expand("Step1G/{sample}.sorted.bam", sample=getlist_id),
                 #Step3G_featurecount
@@ -39,7 +40,7 @@ if config["map"] == "Genome":
                 #Step4G_diffexp
                 expand("Step4G/{sample}", sample=meta_all),
                 
-            if config["QC_align"]:
+            elif config["QC_align"]:
                 #Step2G_assess_align
                 expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id),
                 expand("Step2G/{sample}.r", sample=getlist_id),     
