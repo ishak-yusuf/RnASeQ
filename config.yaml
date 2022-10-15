@@ -5,6 +5,8 @@ indexname: "genomehuman38" # Name the index or Type the name of index in "Assemb
 # Direct the analysis
 map: "Genome"       # "Genome" or  "Transcriptome" 
 end: "paired"       # "single" or "paired"
+QC_fq: yes          # if you'd like to get only QC report regarding fq files
+QC_align: yes       # if you'd like to get only QC report regarding bams files
 ext:                # extension of fastq file
   f: ".fastq.gz"    # any extanstion of fastq file (paired & single)
   f1: "_R1_001.fastq.gz"     # any extanstion of fastq file (paired)
