@@ -18,6 +18,6 @@ th:
   normal: 16
 
 # Assembly and Annotation files
-Assembly: "Assembly/genome.fa" #genome/transcriptome fasta file
-gtf: "Assembly/genome.gtf"     #genome/transcriptome gtf file
-gtfqc: "Assembly/genome.gtf"  #genome gtf file for rnaseqc
+Assembly: "Assembly/file.fa" #genome/transcriptome fasta file
+gtf: "Assembly/file.gtf"     #genome/transcriptome gtf file
+gtfqc: "Assembly/file_adjusted.gtf"  #genome gtf file for rnaseqc
