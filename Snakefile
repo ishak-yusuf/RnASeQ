@@ -27,23 +27,23 @@ if config["map"] == "Genome":
     rule Genome:
         input:
             #QC
-            if config["QC_fq"]:
-                expand("QC/{sample}_fastqc.zip", sample= getlist_all ),
-                "QC/multiqc_report.html",
-                "QC/seqkit_stats.txt",
-                
-            elif config["Align_bam"]:
-                #Step1G_align
-                expand("Step1G/{sample}.sorted.bam", sample=getlist_id),
-                #Step3G_featurecount
-                "Step3G/counts_all.txt",
-                #Step4G_diffexp
-                expand("Step4G/{sample}", sample=meta_all),
-                
-            elif config["QC_align"]:
-                #Step2G_assess_align
-                expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id),
-                expand("Step2G/{sample}.r", sample=getlist_id),     
+            expand("QC/{sample}_fastqc.zip", sample= getlist_all ),
+            "QC/multiqc_report.html",
+            "QC/seqkit_stats.txt",
+            
+            #Step1G_align
+            expand("Step1G/{sample}.sorted.bam", sample=getlist_id),
+            
+            #Step2G_assess_align
+            expand("Step2G/{sample}.samtoolsflagstat.txt", sample=getlist_id),
+            expand("Step2G/{sample}.r", sample=getlist_id), 
+            
+            #Step3G_featurecount
+            "Step3G/counts_all.txt",
+            
+            #Step4G_diffexp
+            expand("Step4G/{sample}", sample=meta_all),
+    
 
     include: "rules/index_genomeG.smk"
     include: "rules/quality_control.smk"
