@@ -13,21 +13,19 @@ if config["end"] == "paired":
             f2=config["ext"]["f2"],
             i="input/",
             a="Assembly/",
-        threads: config["th"]["normal"]
+        threads: workflow.cores
         message:
             "--- Alignment paired genome with Hisat"
         log:
             "Step1G/{sample}.log",
-        resources:
-            meme_mb= 10000,
-            rate_limit= 1
+        #resources: mem_mb=30000, rate_limit= 1
         conda:
             "envs/align.yaml"
         shell:
             """
             hisat2 -q --rna-strandness {params.strandness} -x {params.a}{params.ref} \
             -1 {params.i}{wildcards.sample}{params.f1} -2 {params.i}{wildcards.sample}{params.f2} -p {threads}\
-            -S {output}
+            -S {output} 2> {log}
             """
 
 
@@ -42,12 +40,12 @@ elif config["end"] == "single":
             f=config["ext"]["f"],
             i="input/",
             a="Assembly/",
-        threads: config["th"]["normal"]
+        threads: workflow.cores 
         message:
             "--- Alignment single genome with Hisat"
         log:
             "Step1G/{sample}.log",
-        resources: meme_mb= 10000,
+        resources: mem_mb=30000,
                    rate_limit=1
         conda:
             "envs/align.yaml"
@@ -55,22 +53,20 @@ elif config["end"] == "single":
             """
             hisat2 -q --rna-strandness {params.strandness} -x {params.a}{params.ref} \
             -U {params.i}{wildcards.sample}{params.f}  -p {threads}\
-            -S {output}
+            -S {output} 2> {log}
             """
-
 
 rule bams:
     input:
         "Step1G/{sample}.sam",
     output:
         "Step1G/{sample}.sorted.bam",
-    threads: config["th"]["normal"]
+    threads: workflow.cores
     conda:
         "envs/align.yaml"
     params:
         "Step1G/",
-    resources: meme_mb= 10000,
-               rate_limit=1
+    #resources: meme_mb= 10000, rate_limit=1
     shell:
         """
         samtools view -@ {threads} -bh {input} > {params}{wildcards.sample}.bam
