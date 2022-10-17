@@ -18,7 +18,6 @@ if config["end"] == "paired":
             "--- Alignment paired genome with Hisat"
         log:
             "Step1G/{sample}.log",
-        #resources: mem_mb=30000, rate_limit= 1
         conda:
             "envs/align.yaml"
         shell:
@@ -45,8 +44,6 @@ elif config["end"] == "single":
             "--- Alignment single genome with Hisat"
         log:
             "Step1G/{sample}.log",
-        resources: mem_mb=30000,
-                   rate_limit=1
         conda:
             "envs/align.yaml"
         shell:
@@ -66,7 +63,6 @@ rule bams:
         "envs/align.yaml"
     params:
         "Step1G/",
-    #resources: meme_mb= 10000, rate_limit=1
     shell:
         """
         samtools view -@ {threads} -bh {input} > {params}{wildcards.sample}.bam
