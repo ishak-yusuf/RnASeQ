@@ -7,8 +7,10 @@ rule summary_stat:
         "Step2G/{sample}.samtoolsflagstat.txt",
     conda:
         "envs/step2.yaml"
+    log: "Step2G/{sample}.samtoolsflagstat.txt.log"
+    #resources: meme_mb=25000,  rate_limit=1
     shell:
-        "samtools flagstat {input} > {output} "
+        "samtools flagstat {input} > {output} 2> {log}"
 
 
 rule alignment_rate:
@@ -29,11 +31,12 @@ rule RNASeqQC:
         config["gtfqc"],
     output:
         directory("Step2G/{sample}.r"),
-    threads: config["th"]["normal"]
+    threads: workflow.cores * 0.3
     log:
         "Step2G/{sample}r.log",
     conda:
         "envs/rnaseqc.yaml"
+    #resources: meme_mb=25000,  rate_limit=1
     shell:
         "rnaseqc {params} {input} {output} -d {threads} 2> {log}"
 
