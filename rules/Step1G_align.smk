@@ -13,11 +13,11 @@ if config["end"] == "paired":
             f2=config["ext"]["f2"],
             i="input/",
             a="Assembly/",
-        threads: workflow.cores
+        threads: config['th']['normal']
         message:
             "--- Alignment paired genome with Hisat"
         log:
-            "Step1G/{sample}.log",
+            "Step1G/{sample}.sam.log",
         conda:
             "envs/align.yaml"
         shell:
@@ -58,7 +58,7 @@ rule bams:
         "Step1G/{sample}.sam",
     output:
         "Step1G/{sample}.sorted.bam",
-    threads: workflow.cores
+    threads: config['th']['normal']
     conda:
         "envs/align.yaml"
     params:
