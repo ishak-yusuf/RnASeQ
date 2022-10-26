@@ -7,9 +7,7 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 - Functional profiling with RNA-seq
 - Identify short variants (SNPs and Indels) in RNAseq data
-- Alternative splicing analysis
 - Small RNAs
-- Gene fusion discovery
 
 # Workflow:
 <p align="center">
