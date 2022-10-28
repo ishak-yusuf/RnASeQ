@@ -40,7 +40,7 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 4- INdex the reference genome according to
 hisat2
-``` ```
+``` hisat2-build -p th input.genome index.name ```
 
 kallisto
 ``` ```
