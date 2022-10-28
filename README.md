@@ -38,7 +38,8 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 ``` python3 collapse_annotation.py file.gtf file_adjusted.gtf ``` 
 
-4- INdex the reference genome according to
+4- Index the reference genome according to
+
 hisat2
 ``` hisat2-build -p th input.genome index.name ```
 
