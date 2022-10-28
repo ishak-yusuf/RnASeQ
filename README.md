@@ -11,7 +11,7 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 # Workflow:
 <p align="center">
-  <img  src="https://user-images.githubusercontent.com/66043140/194846073-8548eff8-3e5b-4a00-9481-4be4811d92c3.png" >
+  <img  src="https://user-images.githubusercontent.com/66043140/198525715-6033474d-b808-4d24-8721-bb14a53df60b.jpg" >
   </p>
 
 
@@ -38,7 +38,16 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 
 ``` python3 collapse_annotation.py file.gtf file_adjusted.gtf ``` 
 
-4- Metadata table: 
+4- INdex the reference genome according to
+hisat2
+``` ```
+
+kallisto
+``` ```
+
+
+
+5- Metadata table: 
 
 Add sampleA_sampleB.csv to the **input** folder with fastq files. 
 
@@ -51,32 +60,13 @@ sampleB-1,control
 sampleB-2,control
 sampleB-3,control
 ```
-The importent point is that sampleA-1 is mateched with fastq files paired-end and single-end
-e.g:  **sampleA-1_r1.fq.gz** , **sampleA-1_r1.fq.gz** (paired-end) or  **sampleA-1.fq.gz** (single-end)
 
-If you have huge data, you can organise an excel sheet called **metadata_all.csv** as shown below:
 
-```
-ID,case1,case2,case3,control1,control2,control3
-sampleA_sampleB,sampleA-1,sampleA-2,sampleA-3,sampleB-1,sampleB-2,sampleB-3
-sampleA_sampleC,sampleA-1,sampleA-2,sampleA-3,sampleC-1,sampleC-2,sampleC-3
-...
-
-```
-Run the  ``` python3 metamaker.py metadata_all.csv ``` 
-
-You will get single sampleA_sampleB.csv , sampleA_sampleC.csv and so on ...
-
-Add all outputs to the the **input** folder with fastq files
-
-You will get single 
-
-5- Adjust **config.yaml** to be suitable for your case. 
+6- Adjust **config.yaml** to be suitable for your case. 
 The example/example config folder include all different scenarios of config.yaml.
 
 ```
 # index
-IndexAssembly: "hisat2"    # "hisat2" with genome or "kallisto" with transcriptome or  " " if you have index already
 indexname: "genomehuman38" # Name the index or Type the name of index in "Assembly"
 
 # Direct the analysis
@@ -99,7 +89,7 @@ gtf: ""     #genome/transcriptome gtf file
 gtfqc: ""  #genome gtf file for rnaseqc
 
 ```
-6-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
+7-  RUN ``` snakemake --cores all  --use-singularity  --use-conda ``` in the RnASeq directory 
 
 # Expected outcome:
 
@@ -122,6 +112,8 @@ The five folders re going to be extracted.
 2- **Step1T**: folder has all TPM reads for each sample
 
 3- **Step2T**: folder has normalized data with edger
+
+
 
 # Main References:
 
