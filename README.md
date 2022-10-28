@@ -43,7 +43,7 @@ hisat2
 ``` hisat2-build -p th input.genome index.name ```
 
 kallisto
-``` ```
+``` kallisto index -i index.name input.Transcriptome ```
 
 
 
