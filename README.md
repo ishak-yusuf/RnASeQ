@@ -25,6 +25,9 @@ RnASeQ performs measuring and comparing the levels of gene expression in a wide 
 | step4G | [![Conda:deseq2](https://img.shields.io/badge/bioconductor-deseq2-important.svg)](https://anaconda.org/bioconda/bioconductor-deseq2) |
 | transT + Step1T | [![docker:kallisto](https://img.shields.io/badge/docker-kallisto-important.svg)](https://hub.docker.com/r/zlskidmore/kallisto) |
 | Step2T  | [![bioconductor:edger](https://img.shields.io/badge/bioconductor-edger-important.svg)](https://anaconda.org/bioconda/bioconductor-edger) |
+| Step Vis| [![bioconductor:edger](https://img.shields.io/badge/r-ggplot2-important.svg)](https://anaconda.org/conda-forge/r-ggplot2) |
+| Step FP | [![bioconductor:edger](https://img.shields.io/badge/bioconda-gprofiler-important.svg)](https://anaconda.org/bioconda/gprofiler-official) |
+
 
 
  
