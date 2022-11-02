@@ -117,6 +117,8 @@ The five folders re going to be extracted.
 
 3- **Step2T**: folder has normalized data with edger
 
+**Step Vis**: folder has volcano plot, MA plot and heatmap.
+**Step FP** : folder has gene ontology graph. 
 
 
 # Main References:
